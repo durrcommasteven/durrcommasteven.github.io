@@ -13,7 +13,7 @@ tags:
 ## (my favorite kind of book)
 
 <figure>
-<img src="assets/img/post_1/four_image_combination.png" alt="dutch book images" style="width:100%">
+<img src="{{site.baseurl}}\assets\images\post_1\four_image_combination.png" alt="dutch book images" style="width:100%">
 <figcaption align = "center"><b>Stable Diffusion's attempts at creating a "Dutch Book"</b></figcaption>
 </figure>
 
@@ -124,7 +124,7 @@ Okay, after initializing the odds according to a log-normal distribution, let's 
 
 First, the minimum winnings of our model:
 <figure>
-<img src="assets/img/post_1/winnings_over_time.png" alt="winnings" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_1/winnings_over_time.png" alt="winnings" style="width:100%">
 <figcaption align = "center"><b>The result of repeatedly trying to outwit a bookie</b></figcaption>
 </figure>
 Cool, it seems that our gambler repeatedly discovers bets to make money (in blue), before the bookie catches on and changes the odds. What exactly is going on?
@@ -132,7 +132,7 @@ Cool, it seems that our gambler repeatedly discovers bets to make money (in blue
 When I look at the bets, it seems they all kind of do the same thing -- flipping between betting on all the horses winning and betting on all of them loses. Let's take a look:
 
 <figure>
-<img src="assets/img/post_1/winnings_and_bets.png" alt="winnings" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_1/winnings_and_bets.png" alt="winnings" style="width:100%">
 <figcaption align = "center"><b>The result of repeatedly trying to outwit a bookie</b></figcaption>
 </figure>
 
@@ -147,7 +147,7 @@ $$
 \{x_i\}
 $$, and that they keep getting screwed out of money.
 <figure>
-<img src="assets/img/post_1/sum_of_probs.png" alt="winnings" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_1/sum_of_probs.png" alt="winnings" style="width:100%">
 <figcaption align = "center"><b>The result of repeatedly trying to outwit a bookie</b></figcaption>
 </figure>
 Awesome! Looks like our bookie has learned probability theory! If only they had paid attention in school, we wouldn't need to do this the hard way. 
@@ -175,7 +175,7 @@ $$
 enters in, and the reward drops linearly. Basically, its just an artifact of how we've parameterized the odds. 
 
 <figure>
-<img src="assets/img/post_1/probs_and_odds.png" alt="winnings" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_1/probs_and_odds.png" alt="winnings" style="width:100%">
 <figcaption align = "center"><b>The result of repeatedly trying to outwit a bookie</b></figcaption>
 </figure>
 
