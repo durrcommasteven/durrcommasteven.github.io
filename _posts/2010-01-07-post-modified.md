@@ -1,16 +1,13 @@
 ---
-title: "Post: Modified Date"
+title: "Dutch books (my favorite kind of book)"
 last_modified_at: 2016-03-09T16:20:02-05:00
 categories:
   - Blog
 tags:
-  - Post Formats
-  - readability
-  - standard
+  - Probability
+  - GANs
+  - machine Learning
 ---
-
-# Dutch Books 
-## (my favorite kind of book)
 
 <figure>
 <img src="{{site.baseurl}}\assets\images\post_1\four_image_combination.png" alt="dutch book images" style="width:100%">
@@ -187,4 +184,3 @@ I do like to believe that, just like this bookie, [we can get better at setting 
 
 Maybe we should all investigate some of our beliefs to make sure nobody can scam us either.
 
-[back](./all_posts.html)
