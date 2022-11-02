@@ -13,12 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 
-email: 
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+title: "Steve's site"
+email: "StevenDurr@UCLA.edu"
+description: "Steve's thoughts, projects, experiments"
+url: "https://durrcommasteven.github.io"
+baseurl: "/steves_site"
+
+repository: "durrcommasteven/steves_site"
+
 #twitter_username: username
 github_username: durrcommasteven
 minimal_mistakes_skin: "contrast"
@@ -64,8 +66,8 @@ author:
   bio    : "thoughts, projects, experiments"
   links:
     - label: "Resume"
-      icon: "fas fa-file"
-      url: "/assets/pdfs/resume_2022.pdf"
+      icon: "fal fa-file-user"
+      url: "https://github.com/durrcommasteven/steves_site/assets/images/resume_22.pdf"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/durrcommasteven/"
@@ -92,11 +94,13 @@ defaults:
       type: posts
     values:
       layout: single
+      #layout: splash
       author_profile: true
       read_time: true
       comments: true
       share: true
       related: true
+    
   # _pages
   - scope:
       path: "_pages"
@@ -104,6 +108,15 @@ defaults:
     values:
       layout: single
       author_profile: true
+  
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: true
 
 category_archive:
   type: liquid
@@ -111,3 +124,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
