@@ -66,11 +66,14 @@ author:
   bio    : "thoughts, projects, experiments"
   links:
     - label: "Resume"
-      icon: "fab fa-github"
-      url: "/assets/pdfs/resume_2022.pdf"
+      icon: "fa-regular fa-file"
+      url: "http://localhost:4000/steves_site/assets/pdfs/resume_2022.pdf"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/durrcommasteven/"
+    - label: "LinkedIn"
+      icon: "fab fa-linkedin"
+      url: "https://linkedin.com/"
 
 footer:
   links:
