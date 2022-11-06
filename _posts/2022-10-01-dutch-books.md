@@ -7,7 +7,7 @@ tags:
   - Projects
   - Probability
   - GANs
-  - machine Learning
+  - Machine Learning
 
 excerpt: "(My favorite kind of book)"
 header:
@@ -30,6 +30,7 @@ gallery:
     title: ""
 ---
 
+[see the notebook here](https://github.com/durrcommasteven/dutch_book_project/blob/main/dutch_book_project.ipynb){: .btn .btn--warning}
 
 I was recently biking through the Netherlands, and something about that made the concept of something called a 'dutch book' a bit more salient to me. 
 Suppose a bookie gives odds for some event to occur, and the implicit probabilities from those odds do not add to 1. 
