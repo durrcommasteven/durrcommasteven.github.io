@@ -67,7 +67,7 @@ author:
   links:
     - label: "Resume"
       icon: "fa-regular fa-file"
-      url: "http://localhost:4000/steves_site/assets/pdfs/resume_2022.pdf"
+      url: "/assets/pdfs/resume_2022.pdf"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/durrcommasteven/"
