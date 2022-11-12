@@ -1,8 +1,9 @@
 main:
-  - title: "posts"
-    url: /posts/
   - title: "about me"
     url: /about/
+  - title: "posts"
+    url: /posts/
+  
   
 #  - title: "categories"
 #    url: /categories/
