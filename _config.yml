@@ -67,7 +67,7 @@ author:
   links:
     - label: "Resume"
       icon: "fas fa-fw fa-link"
-      url: "resume"
+      url: "https://durrcommasteven.github.io/steves_site/resume/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/durrcommasteven/"
