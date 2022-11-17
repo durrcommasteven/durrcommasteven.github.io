@@ -10,3 +10,7 @@ Here's my [resume]({{ site.baseurl }}{% link /assets/pdfs/resume_2022.pdf %}).
 
 I have a lot of miscellaneous questions that pop into my head, and like to work things out from first principles. This
 often results in [random projects]({{ site.baseurl }}/posts).
+
+And here's the graduate student address I gave at UCLA's physics commencement ceremony
+
+{% include video id="cDOQWZAwYlo" provider="youtube" %}
