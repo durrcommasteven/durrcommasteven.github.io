@@ -17,9 +17,9 @@ title: "Steve's site"
 email: "StevenDurr@UCLA.edu"
 description: "Steve's thoughts, projects, experiments"
 url: "https://durrcommasteven.github.io"
-baseurl: "/steves_site"
+baseurl: "/"
 
-repository: "durrcommasteven/steves_site"
+repository: "durrcommasteven.github.io"
 
 #twitter_username: username
 github_username: durrcommasteven
@@ -67,7 +67,7 @@ author:
   links:
     - label: "Resume"
       icon: "fas fa-fw fa-link"
-      url: "https://durrcommasteven.github.io/steves_site/resume/"
+      url: "https://durrcommasteven.github.io/resume/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/durrcommasteven/"
