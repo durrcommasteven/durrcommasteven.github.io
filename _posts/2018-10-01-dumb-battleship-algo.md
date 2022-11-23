@@ -109,7 +109,7 @@ That is, the trained model comes from taking an untrained model, and applying th
 We can approach this from exactly the same Born mentality as before: assume that the strategy of the trained model will be in some way a variation of the strategy of the untrained model (random guessing). We can then write what I will call the First Born Approximation of the NN model.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_2/untrained.png" alt="first_nn_born_approx" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_2/untrained1.png" alt="first_nn_born_approx" style="width:100%">
 </figure>
 
 Now, again, if I really wanted to I could keep going and instead get the second, third, or fourth Born Approximations of the NN. The reasons not to do this are, however, extremely compelling:
@@ -131,7 +131,9 @@ There are two responses to this concern:
 1. 
   I don't care. All I care about is choosing the most probable unexplored square. So as long as the output of the neural network is a strictly increasing function $f$ of the actual probability, our choice of most probable next square is unchanged.
 
-  max($\{ p(x_{i, j}) | x_{i, j} \in unexplored \}$) = max($\{ f(p(x_{i, j})) | x_{i, j} \in unexplored \}$)
+  $$
+  max(\{ p(x_{i, j}) | x_{i, j} \in unexplored \}) = max(\{ f(p(x_{i, j})) | x_{i, j} \in unexplored \})
+  $$
 
   And our algorithm stays the same.
 
@@ -146,13 +148,15 @@ There are two responses to this concern:
 
   Then the loss function we want would be the function, $L$, such that the expected loss
 
-  $p(x_{i, j}) L(1, q(x_{i, j}))+(1-p(x_{i, j})) L(0, q(x_{i, j}))$
+  $$
+  p(x_{i, j}) L(1, q(x_{i, j}))+(1-p(x_{i, j})) L(0, q(x_{i, j}))
+  $$
 
   is minimized when $q(x_{i, j})=p(x_{i, j})$.
 
   This can be read as "(the probability of being correct) times (the loss if correct) plus (the probability of being incorrect) times (the loss if incorrect)"
 
-  To simplify things, we can see that $L(0, q(x_{i, j})) = L(1, 1-q(x_{i, j}))$. In words: the punishment for having the output be 0, when you predicted it would be 1 with probability $q(x_{i, j})$ should be the same as the punishment for having the output be 1 when you said it would be zero with probability $1 - q(x_{i, j})$
+  To simplify things, we can see that $L(0, q(x_{i, j})) = L(1, 1-q(x_{i, j}))$. In words: the punishment for having the output be 0, when you predicted it would be 1 with probability $q(x_{i, j})$ should be the same as the punishment for having the output be 1 when you said it would be zero with probability $1 - q(x_{i, j})$.
 
   Using this, we can make things more concise and say that $L$ must minimize
 
@@ -162,7 +166,7 @@ There are two responses to this concern:
 
   We ensure this by setting the derivative with respect to $p(x_{i, j})$ to zero at $q(x_{i, j})=p(x_{i, j})$. That is:
 
-  $0 = p(x_{i, j}) L'(p(x_{i, j})) - (1-p(x_{i, j})) L'(1 - p(x_{i, j}))$
+  $$0 = p(x_{i, j}) L'(p(x_{i, j})) - (1-p(x_{i, j})) L'(1 - p(x_{i, j}))$$
 
   This is solved by $L( p ) = - Log( p )$, which is equal to a loss function known as cross entropy. Cross entropy, it so happens, is exactly the function my training algorithm uses to compare the NN output to the actual board.
 
