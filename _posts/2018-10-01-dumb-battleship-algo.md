@@ -197,7 +197,7 @@ The NN also understands the directionality of the ships it sees. It always seems
 Let's move on to an analysis that's more quantitative: the distribution of the lengths of a different games. I let my algorithm run for a while, and after around 2500 games I checked the distribution of how long they tended to take.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_2/game_length_dist.pdf" alt="game_length_distribution" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_2/game_length_dist.png" alt="game_length_distribution" style="width:100%">
 </figure>
 
 The median here (i.e. the number of moves needed to win at least half the games) was 52. But how does this compare?
@@ -207,7 +207,7 @@ This quantity is something that Nick Berry analyzed in his blog for four differe
 Below we show the fraction of games won as a function of the number of moves made. The dotted red line is my algorithm's median, and the other vertical lines are the medians of Nick Berry's algorithms.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_2/game_length_cdf.pdf" alt="game_length_cdf" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_2/game_length_cdf.png" alt="game_length_cdf" style="width:100%">
 </figure>
 
 My algorithm was vastly better than random and also beat out both of his custom algorithms. Unfortunately, it was about 10 moves behind his probabilistic algorithm, but for not really trying too hard on perfecting this, I don't feel too bad about that.
@@ -228,9 +228,9 @@ To find out what's going on here, we can look at an especially long game and see
 <img src="{{site.baseurl}}/assets/images/post_2/long_game_webp.webp" alt="long_game" style="width:100%">
 </figure>
 
-This game took 96 moves, and around two thirds into it, the algorithm start to fail pretty spectacularly. The NN clearly doesn't know to assign exactly zero probability to single unknown squares surrounded by misses. In fact, because of this flaw, the algorithm spends over half the game just looking for the length 2 ship.
+This game took literally 100 moves -- way longer than any human would ever take, and on average longer than random guessing. The cause of this failure is the long piece placed horizontally at the bottom of the board, which has a little 2-square boat rotated vertically at its right end. This utterly baffles the neural network, and it ends up predicting that it's more likely that a ship is on a single isolated square (which is impossible) than it is for a tile to be occupied above the long stretch of hits. Obviously the single set of convolutional filters alone aren't a replacement for reasoning.
 
-Lets see how the algorithm plays during one of its faster games, this one taking just 25 moves.
+Lets see how the algorithm plays during one of its faster games, this one taking just 19 moves.
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/short_game_webp.webp" alt="short_game" style="width:100%">
