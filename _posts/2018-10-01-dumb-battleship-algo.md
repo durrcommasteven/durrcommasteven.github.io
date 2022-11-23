@@ -215,7 +215,7 @@ My algorithm was vastly better than random and also beat out both of his custom 
 Another interesting analysis shows that my algorithm even 'knows' how many ships it has left to find. I applied my algorithm to some partially revealed random boards (the same type used as training data). Then I summed up the probability that the algorithm gave for each unexplored square to have a ship on it, and compared this number with the actual number of squares with ships left to be found. The two sets of numbers line up almost exactly.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_2/implied_remaining_tiles.pdf" alt="implied_remaining_tiles" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_2/implied_remaining_tiles.png" alt="implied_remaining_tiles" style="width:100%">
 </figure>
 
 We can also easily see that there are some serious problems with this algorithm. For instance, if we look at the game length distribution, we see that there was at least one game which took around 98 moves.
