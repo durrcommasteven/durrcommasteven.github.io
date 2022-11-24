@@ -211,7 +211,7 @@ This quantity is something that Nick Berry analyzed in his blog for four differe
 Below we show the fraction of games won as a function of the number of moves made. The dotted red line is my algorithm's median, and the other vertical lines are the medians of Nick Berry's algorithms.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_2/game_length_cdf.png" alt="game_length_cdf" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_2/game_length_cdf.png" alt="game_length_cdf_with_median" style="width:100%">
 </figure>
 
 My algorithm was vastly better than random and also beat out both of his custom algorithms. Unfortunately, it was about 10 moves behind his probabilistic algorithm, but for not really trying too hard on perfecting this, I don't feel too bad about that.
@@ -278,7 +278,7 @@ _________________
 
 
 
-**A note**: I wrote this back in 2018, and thought I would clean it up and post it here. I also cleaned up the code I used, and rewrote the ML stuff with tensorflow 2 (originally I used tensorflow 1, with sessions and all that)
+**A note**: I originally wrote this back in 2018. Back then I used tensorflow 1 (with sessions and all that), and so I rewrote that in tensorflow 2. 
 
 
 
