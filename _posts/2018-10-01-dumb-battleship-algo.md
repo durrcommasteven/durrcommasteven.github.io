@@ -56,13 +56,17 @@ To keep things simple, I used the neural network architecture shown below (right
 We have one convolutional layer (no max pooling or anything -- I want this as simple as possible) and one fully connected layer (both with Relu activation). We get our probability distribution output by reshaping from a length 100 list to a 10x10 array.
 
 There's also some obvious symmetry available to us here. Obviously if I flip any board, my predictions should be the same (but flipped). The same applies to rotations of the board. Collectively these make up the dihedral group, $D_4$, which has 8 elements: 4 rotations by $\pi/2$, and 4 rotations with a flip included. We therefore want our probabilities to be invariant under $D_4$:
+
 $$
 p(\hat{O} board) = p(board) \forall \hat{O} \in D_4
 $$
-To ensure this, I'll define the total output of the model to be 
+
+To ensure this, I'll define the total output of the model to be
+
 $$
 NN(board) = \frac{1}{8} \sum_{\hat{O} \in D_4} \tilde{NN}(\hat{O} board)
 $$
+
 Where I've used $\tilde{NN}$ to refer to a single unsymmetrized evaluation of the network. 
 Above, I'm averaging logits -- to get a probability apply sigmoid to the averaged logits. Intuitively, applying a sigmoid after averaging should allow the symmetries to improve learning. 
 
@@ -128,16 +132,14 @@ Really, all I can know is that my NN produces some monotonically increasing func
 
 There are two responses to this concern:
 
-1. 
-  I don't care. All I care about is choosing the most probable unexplored square. So as long as the output of the neural network is a strictly increasing function $f$ of the actual probability, our choice of most probable next square is unchanged.
+### 1. 
+  I don't care. All I care about is choosing the most probable unexplored square. So as long as the output of the neural network is a strictly increasing function $f$ of the actual probability, our choice of most probable next square is unchanged and our algorithm stays the same.
 
   $$
   max(\{ p(x_{i, j}) | x_{i, j} \in unexplored \}) = max(\{ f(p(x_{i, j})) | x_{i, j} \in unexplored \})
   $$
 
-  And our algorithm stays the same.
-
-2. 
+### 2. 
   If you're really invested in this question, there is a way to make sure that the neural network's output corresponds to its internal probabilities and not just some monotonic function of them.
 
   The output of a neural network depends on the loss function that it is trained with. Essentially, this is the function used to determine the difference between the correct probability distribution and the one the NN produced. It tells the algorithm how 'incorrect' the NN is, and the algorithm tries to minimize it.
@@ -232,7 +234,7 @@ To find out what's going on here, we can look at an especially long game and see
 <img src="{{site.baseurl}}/assets/images/post_2/long_game_webp.webp" alt="long_game" style="width:100%">
 </figure>
 
-This game took literally 100 moves -- way longer than any human would ever take, and on average longer than random guessing. The cause of this failure is the long piece placed horizontally at the bottom of the board, which has a little 2-square boat rotated vertically at its right end. This utterly baffles the neural network, and it ends up predicting that it's more likely that a ship is on a single isolated square (which is impossible) than it is for a tile to be occupied above the long stretch of hits. Obviously the single set of convolutional filters alone aren't a replacement for reasoning.
+This game took literally 100 moves -- way longer than any human would ever take, and longer than random guessing (on average). The cause of this failure is the long piece placed horizontally at the bottom of the board, which has a little 2-square boat rotated vertically at its right end. This utterly baffles the neural network, and it ends up predicting that it's more likely that a ship is on a single isolated square (which is impossible) than it is for a tile to be occupied above the long stretch of hits. Obviously the single set of convolutional filters alone aren't a replacement for reasoning.
 
 Lets see how the algorithm plays during one of its faster games, this one taking just 19 moves.
 
@@ -246,6 +248,7 @@ FInally, heres a 'median game' taking around 52 moves
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/median_game_webp.webp" alt="median_game" style="width:100%">
 </figure>
+
 
 # Potential Improvements
 
@@ -264,7 +267,7 @@ I can immediately see two ways that it would be possible to improve this algorit
 
 The weaknesses of this algorithm stem from the same quality that provides so much strength -- its use of fast heuristics over some protracted application of logic.
 
-Humans aren't natural logicians. Instead, we use sets of heuristics to analyze the different patterns we come across. This is exactly what neural networks do as well (remember, our brains are neural networks). Neural networks are effective because they're able to find good internal representations of the various patterns observed in the data, and (in supervised learning) learn to correlate these with the training labels.
+Humans aren't natural logicians. Instead, we use sets of heuristics to analyze the different patterns we come across. This is exactly what neural networks do as well (remember, our brains are (spiking) neural networks). Neural networks are effective because they're able to find good internal representations of the various patterns observed in the data, and (in supervised learning) learn to correlate these with the training labels.
 
 My NN could have learned to give zero probability to the unexplored squares surrounded by misses. The fact that it doesn't do this is likely a result of the Born approximation we applied, resulting in a lack of this pattern in the training data.
 
