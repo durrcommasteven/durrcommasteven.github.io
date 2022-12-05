@@ -281,7 +281,7 @@ _________________
 
 
 
-**A note**: I originally wrote this back in 2018. Back then I used tensorflow 1 (with sessions and all that), and so I rewrote that in tensorflow 2. 
+**A note**: I originally wrote this back in 2018. Back then I used tensorflow 1 with sessions and all that. Don't panic though, it has been redone in tensorflow 2.
 
 
 
