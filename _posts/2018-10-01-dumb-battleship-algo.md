@@ -213,7 +213,7 @@ This quantity is something that Nick Berry analyzed in his blog for four differe
 Below we show the fraction of games won as a function of the number of moves made. The dotted red line is my algorithm's median, and the other vertical lines are the medians of Nick Berry's algorithms.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_2/game_length_cdf.png" alt="game_length_cdf_with_median" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_2/game_length_cdf.png" alt="cdf_with_median" style="width:100%">
 </figure>
 
 My algorithm was vastly better than random and also beat out both of his custom algorithms. Unfortunately, it was about 10 moves behind his probabilistic algorithm, but for not really trying too hard on perfecting this, I don't feel too bad about that.
