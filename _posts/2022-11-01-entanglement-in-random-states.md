@@ -37,13 +37,43 @@ The way these neural network wavefunctions work is as follows:
 
 Wavefunctions are defined over basis states, $\Psi(\sigma)$, where each $\sigma$ is some basis element. 
 for a particle in a box, $\sigma$ would be spatial position, $x$, and $\Psi(x)$ maps positions to complex numbers. 
-For a 1d spin model, $\sigma$ would be a given spin configuration (like $\{0,1,1,1,0,1\}$). 
-Here, $\Psi(\sigma)$ effectively maps lists of 1's and 0's to complex numbers. 
+For a 1d spin model, $\sigma$ would be a given spin configuration (imagine a spin is either $1$ or $0$, and a configuration could be something like $\{0,1,1,1,0,1\}$). 
+Here, $\Psi(\sigma)$ effectively maps sequences of 1's and 0's to complex numbers. 
 
-If you wanted to describe the ground state of the former model, you might just take $\Psi(x)$ to be some physically plausible candidate, or some sum of candidates, and use the variational principle to minimize the energy. 
+If you wanted to describe the ground state of the particle in a box model, you might just take $\Psi(x)$ to be some physically plausible candidate, or some sum of candidates, and use the variational principle to minimize the energy. 
+-----
+The variational principle tells us that by minimizing the energy of a state, we get the ground eigenstate. 
+This sounds trivial, but it's incredibly useful. 
+
+Let's see how this is derived below:
+
+Writing $| \psi \rangle = \sum_i \psi_i |i\rangle$, we have
+
+$$
+\langle \psi | H | \psi \rangle = \sum_{i, j} \psi^*_i  \psi_j \langle i | H | j \rangle
+$$
+Now which normalized vector minimizes this? Let's find out
+$$
+\mathcal{L} = \lambda(1-\sum_i \psi_i^* \psi_i) + \sum_{i, j} \psi^*_i  \psi_j \langle i | H | j \rangle
+$$
+Setting the functional derivative to zero tells us
+$$
+\frac{d}{d\psi^*_i}\mathcal{L} = -\lambda \psi_i + \sum_{j}  \psi_j \langle i | H | j \rangle =0
+$$
+Okay so what is this saying?
+$$
+\sum_{j}  \psi_j \langle i | H | j \rangle = \lambda \psi_i
+$$
+In other words, $H |\psi \rangle = \lambda |\psi \rangle$, which is the eigenvalue equation. 
+
+Therefore minimizing the expectation of the energy should give us the ground state. 
+
+An interesting side-effect of this derivation is that _every_ eigenstate is an extreme of the energy. 
+
+-----
 Just use some numerical integration and differentiation to find $\theta$ which minimizies $\langle \Psi_\theta | H | \Psi_\theta\rangle$, and we're left with a pretty good approximate ground state.
 
-Neural networks tend to come into play when we're discussing lattice models. Why is this?
+Fancy neural networks tend to come into play when we're discussing lattice models. Why is this?
 
 Suppose I have some lattice hamiltonian, $H$, acting on $N$ spins, and I'd like to approximate its ground state. 
 Starting with the same approach, suppose we define some parametrized model $\Psi_\theta(\sigma)$ that seems plausible (or has enough capacity to model whatever the answer might be).
@@ -57,9 +87,9 @@ $$
 
 Define $E_{loc}(\sigma')$ as 
 \begin{equation}
-    E_{loc}(\sigma') = \sum_{\sigma} H_{\sigma', \sigma} \frac{\Psi_\theta(\sigma)}{\Psi_\theta(\sigma')}
+    E_{loc}(\sigma') \equiv \sum_{\sigma} H_{\sigma', \sigma} \frac{\Psi_\theta(\sigma)}{\Psi_\theta(\sigma')}
 \end{equation}
-For sufficiently restricted Hamiltonians, (which covers a ton of them) H_{\sigma', \sigma} will almost always vanish, and so this is tractable to compute. 
+For sufficiently restricted Hamiltonians, (which covers almost none of them, but almost all of the ones we care about) H_{\sigma', \sigma} will nearly always vanish, and so this is tractable to compute. 
 
 We are then left with
 
@@ -69,7 +99,7 @@ We are then left with
 
 Great! no problem, just compute this and use gradient descent to minimize with respect to $\theta$.
 
-For 100 spins, you can simply plug this into your laptop and after just a couple thousand universe lifetimes you'll have one iteration done. 
+For 100 spins, you can simply plug this into your laptop and after just a couple thousand lifetimes of the universe, you'll have one iteration done. 
 
 But grad school is just six years, and kids dont have long attention spans anymore, so maybe you want something faster.
 If this is the case, you'll have to approximate the gradient. 
@@ -80,7 +110,17 @@ $$
 $$
 
 That was easy! Let's just see how big $n$ has to be. 
-We need our gradients to be pretty accurate, so let's look at the variance of the estimate.
+We need our gradients to be pretty accurate, so what's variance of the energy estimate?
+Well, this depends on $|\Psi_\theta(\sigma_i)|^2$. 
+Typical ground states tend to be sparse -- let's suppose $|\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_j)$ is distributed according to 
+
+$$
+P(|\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_j) = x) = \exp(-x \lambda) Z
+$$
+
+So this option also sucks. What do we do?
+The obvious example 
+
 $$
 \langle\tilde{E}_n^2 - E^2\rangle
 \frac{1}{n^2} \sum_{i, j=1}^n |\Psi_\theta(\sigma_i)|^2 |\Psi_\theta(\sigma_j)|^2 E_{loc}(\sigma_i) E_{loc}(\sigma_j)
@@ -88,7 +128,7 @@ $$
 
 E' = (1 / n) 2^N \sum_{i \in s'} p_i E_i
 
-lets say 2^N  is huge (as it normally is)
+lets say 2^N is huge (as it normally is)
 then E' =
 
 
@@ -123,7 +163,8 @@ sample according to
 
 
 
-For each basis state $\sigma$ untrained neural networks return logits, $l_\sigma$. These are passed to a softmax to obtain a probability for each state:
+For each basis state $\sigma$ untrained neural networks return logits, $l_\sigma$. 
+These are passed to a softmax to obtain a probability for each state:
 $$
 p(\bm{\sigma}) = \frac{\exp(l_{\bm{\sigma}})}{\sum_{\bm{\sigma}'} \exp(l_{\bm{\sigma}' })} = \frac{\exp(l_{\bm{\sigma}})}{Z}
 $$
@@ -131,9 +172,11 @@ We can then obtain a real wavefunction by taking the square root.
 $$
 \psi(\bm{\sigma}) =\frac{\exp(l_{\bm{\sigma}}/2)}{\sqrt{Z}}
 $$
-To understand the entanglement within randomly initialized neural network states, we begin by assuming random logits, beginning with the assumption that our logits are initially Gaussian, with mean $\mu$ and standard deviaion $\sigma$. This could arise from the central limit theorem (\textbf{is this the case at initialization for us?}). We immediately see that $\mu$ is of no import, as the partition function within softmax removes it. This leaves $\sigma$ as the parameter of interest.  
+To understand the entanglement within randomly initialized neural network states, we begin by assuming random logits, beginning with the assumption that our logits are initially Gaussian, with mean $\mu$ and standard deviaion $\sigma$.
+ This could arise from the central limit theorem (\textbf{is this the case at initialization for us?}). We immediately see that $\mu$ is of no import, as the partition function within softmax removes it. This leaves $\sigma$ as the parameter of interest.  
 
-We can immediately gain some traction by examining limiting cases. $\sigma \rightarrow 0$ would correspond to equal probability for all basis-states. Note this wavefunction is simply 
+We can immediately gain some traction by examining limiting cases. $\sigma \rightarrow 0$ would correspond to equal probability for all basis-states.
+ Note this wavefunction is simply 
 $$
 |\psi\rangle = \mathcal{N} \bigotimes_i \left( \sum_{s_i} |s_i\rangle  \right)
 $$
