@@ -1,95 +1,55 @@
 ---
-title: "Dutch books"
-last_modified_at: 2022-10-01T16:20:02-05:00
+title: "Transformer Quantum States I"
+last_modified_at: 2023-01-01T16:20:02-05:00
 categories:
   - Blog
 tags:
   - Projects
-  - Probability
-  - GANs
+  - Transformers
+  - Quantum Mechanics
   - Machine Learning
 
-excerpt: "(My favorite kind of book)"
+excerpt: "Why use a language model for physics?"
 header:
-  overlay_image: /assets/images/post_1/four_image_combination.png
-  overlay_filter: 0.2 # same as adding an opacity of 0.5 to a black background
-  caption: "Stable Diffusion's attempts at creating a 'Dutch Book'"
+  overlay_image: /assets/images/post_3/black_background.png
+  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
 
-gallery:
-  - url: /assets/images/post_1/stab_diff_dutch_book_2.jpg
-    image_path: /assets/images/post_1/stab_diff_dutch_book_2.jpg
-    alt: "stab diff image 1"
-    title: ""
-  - url: /assets/images/post_1/stab_diff_dutch_book_3.jpg
-    image_path: /assets/images/post_1/stab_diff_dutch_book_3.jpg
-    alt: "stab diff image 2"
-    title: ""
-  - url: /assets/images/post_1/stab_diff_dutch_book_7.jpg
-    image_path: /assets/images/post_1/stab_diff_dutch_book_7.jpg
-    alt: "stab diff image 3"
-    title: ""
 ---
-
-\section{Entanglement within Random States}
+# Transformer Wavefunctions: Part 1
 
 A while back I was using transformer models to learn the ground states of Hamiltonians (along with my friend Ven). 
-The way these neural network wavefunctions work is as follows:
+Let's outline the way these neural network wavefunctions might be useful.
+
+## Neural Network Wavefunctions
 
 Wavefunctions are defined over basis states, $\Psi(\sigma)$, where each $\sigma$ is some basis element. 
 for a particle in a box, $\sigma$ would be spatial position, $x$, and $\Psi(x)$ maps positions to complex numbers. 
-For a 1d spin model, $\sigma$ would be a given spin configuration (imagine a spin is either $1$ or $0$, and a configuration could be something like $\{0,1,1,1,0,1\}$). 
+For a 1d spin model, $\sigma$ would be a given spin configuration (like $\{0,1,1,1,0,1\}$). 
 Here, $\Psi(\sigma)$ effectively maps sequences of 1's and 0's to complex numbers. 
 
 If you wanted to describe the ground state of the particle in a box model, you might just take $\Psi(x)$ to be some physically plausible candidate, or some sum of candidates, and use the variational principle to minimize the energy. 
------
-The variational principle tells us that by minimizing the energy of a state, we get the ground eigenstate. 
-This sounds trivial, but it's incredibly useful. 
+Just use some numerical integration and differentiation to find $\theta$ which minimizes $\langle \Psi_\theta | H | \Psi_\theta\rangle$, and we're left with a pretty good approximate ground state.
 
-Let's see how this is derived below:
+Neural networks have been useful in the context of lattice models. Why is this?
 
-Writing $| \psi \rangle = \sum_i \psi_i |i\rangle$, we have
+Suppose I have some lattice Hamiltonian, $H$, acting on $N$ spins, and I'd like to approximate its ground state. 
+Starting with the same approach, suppose we define some parameterized model $\Psi_\theta(\sigma)$ which seems plausible (or has enough capacity to model whatever the answer might be). We simply define a 
 
-$$
-\langle \psi | H | \psi \rangle = \sum_{i, j} \psi^*_i  \psi_j \langle i | H | j \rangle
-$$
-Now which normalized vector minimizes this? Let's find out
-$$
-\mathcal{L} = \lambda(1-\sum_i \psi_i^* \psi_i) + \sum_{i, j} \psi^*_i  \psi_j \langle i | H | j \rangle
-$$
-Setting the functional derivative to zero tells us
-$$
-\frac{d}{d\psi^*_i}\mathcal{L} = -\lambda \psi_i + \sum_{j}  \psi_j \langle i | H | j \rangle =0
-$$
-Okay so what is this saying?
-$$
-\sum_{j}  \psi_j \langle i | H | j \rangle = \lambda \psi_i
-$$
-In other words, $H |\psi \rangle = \lambda |\psi \rangle$, which is the eigenvalue equation. 
+Like before, we now want to find the parameters $\theta$ which minimize $\langle \Psi_\theta | H | \Psi_\theta\rangle$.
 
-Therefore minimizing the expectation of the energy should give us the ground state. 
-
-An interesting side-effect of this derivation is that _every_ eigenstate is an extreme of the energy. 
-
------
-Just use some numerical integration and differentiation to find $\theta$ which minimizies $\langle \Psi_\theta | H | \Psi_\theta\rangle$, and we're left with a pretty good approximate ground state.
-
-Fancy neural networks tend to come into play when we're discussing lattice models. Why is this?
-
-Suppose I have some lattice hamiltonian, $H$, acting on $N$ spins, and I'd like to approximate its ground state. 
-Starting with the same approach, suppose we define some parametrized model $\Psi_\theta(\sigma)$ that seems plausible (or has enough capacity to model whatever the answer might be).
-Now, like before, we want to find $\argmin_\theta \langle \Psi_\theta | H | \Psi_\theta\rangle$. 
-
-We can simplify this a bit by writing it
+We can simplify this a bit by writing it as follows
 
 $$
 \langle \Psi_\theta | H | \Psi_\theta\rangle = \sum_{\sigma, \sigma'} \Psi_\theta(\sigma')^* H_{\sigma', \sigma} \Psi_\theta(\sigma) = \sum_{\sigma, \sigma'} |\Psi_\theta (\sigma')|^2 H_{\sigma', \sigma} \frac{\Psi_\theta(\sigma)}{\Psi_\theta(\sigma')}
 $$
 
 Define $E_{loc}(\sigma')$ as 
+
 \begin{equation}
-    E_{loc}(\sigma') \equiv \sum_{\sigma} H_{\sigma', \sigma} \frac{\Psi_\theta(\sigma)}{\Psi_\theta(\sigma')}
+    E_{loc}(\sigma') = \sum_{\sigma} H_{\sigma', \sigma} \frac{\Psi_\theta(\sigma)}{\Psi_\theta(\sigma')}
 \end{equation}
-For sufficiently restricted Hamiltonians, (which covers almost none of them, but almost all of the ones we care about) H_{\sigma', \sigma} will nearly always vanish, and so this is tractable to compute. 
+
+For sufficiently restricted Hamiltonians, (which covers almost none of them, but almost all of the ones we care about) $H_{\sigma', \sigma}$ will nearly always vanish, and so $E_{loc}(\sigma')$ becomes tractable to compute. 
 
 We are then left with
 
@@ -101,147 +61,98 @@ Great! no problem, just compute this and use gradient descent to minimize with r
 
 For 100 spins, you can simply plug this into your laptop and after just a couple thousand lifetimes of the universe, you'll have one iteration done. 
 
-But grad school is just six years, and kids dont have long attention spans anymore, so maybe you want something faster.
+But grad school is just six years, and kids don't have long attention spans anymore, so maybe you want something faster.
 If this is the case, you'll have to approximate the gradient. 
 
-Let's try sampling uniformly over $n$ states, $\{ \sigma_i \}$ to get an energy estimate $\tilde{E}_n$. 
+Let's try sampling uniformly over $n$ states, $\{ \sigma_i \}$ to get an energy estimate $\tilde{E}_n$. This seems nice, because all we need is an encoder -- some function mapping sequences to numbers. Feed it some randomly selected sequences, and minimize the energy of the outputs.
+
+An unbiased estimator using $n$ uniformly selected samples is given by
+
 $$
-\tilde{E}_n = \frac{1}{n \sum_j |\Psi_\theta(\sigma_j)|^2} \sum_{i=1}^n |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i)
+\tilde{E}_n = \frac{2^n}{n} \sum_{i=1}^n |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i)
+$$
+ 
+This is clear, since 
+
+$$
+\langle \tilde{E}_n \rangle = \frac{2^n}{n} \sum_{i=1}^n \langle |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i) \rangle
+$$
+
+which is 
+
+$$
+\frac{2^n}{n} \sum_{i=1}^n \left(\frac{1}{2^n}\sum_{\sigma'} |\Psi_\theta(\sigma')|^2 E_{loc}(\sigma') \right) = 
+\sum_{\sigma'} |\Psi_\theta(\sigma')|^2 E_{loc}(\sigma') 
+$$
+
+and equals 
+
+$$
+\langle \Psi | H | \Psi \rangle
 $$
 
 That was easy! Let's just see how big $n$ has to be. 
-We need our gradients to be pretty accurate, so what's variance of the energy estimate?
-Well, this depends on $|\Psi_\theta(\sigma_i)|^2$. 
-Typical ground states tend to be sparse -- let's suppose $|\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_j)$ is distributed according to 
+We'll need our gradients to be pretty accurate, so let's look at the variance of the estimate.
+
+Well, the variance of a sample of $n$ elements is simply 
 
 $$
-P(|\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_j) = x) = \exp(-x \lambda) Z
+\frac{2^{2n}}{n} Var[|\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)]
 $$
 
-So this option also sucks. What do we do?
-The obvious example 
+Already that exponential term to the left sucks. But maybe every term within the $Var[]$ is nearly identical? Unfortunately not. Let's look at the ground state of the transverse field Ising model at criticality 
+
+[PLOT DISTRIBUTION OF inner term here]
+
+Things don't look great -- how can we fix them? Well, the problem is clearly in how we sample the states. From the variance expression we see that we'll need an exponential number of samples to control the uncertainty in our energy estimates. Let's kill this off using importance sampling. 
+
+## Importance Sampling
+
+What we really care about is finding 
+$$
+\langle E_{loc}(\sigma)\rangle_\sigma
+$$, where 
+$$\sigma \sim |\Psi_\theta(\sigma)|^2$$ as the born rule tells us. If we use $q(\sigma)$ to describe the probability distribution we use to sample the states, then we can write this as
 
 $$
-\langle\tilde{E}_n^2 - E^2\rangle
-\frac{1}{n^2} \sum_{i, j=1}^n |\Psi_\theta(\sigma_i)|^2 |\Psi_\theta(\sigma_j)|^2 E_{loc}(\sigma_i) E_{loc}(\sigma_j)
+\langle E_{loc}(\sigma)\rangle_\sigma = \sum_{\sigma} q(\sigma) \left( q(\sigma)^{-1} |\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)\right)
 $$
 
-E' = (1 / n) 2^N \sum_{i \in s'} p_i E_i
+So far, we've taken $q(x)$ to be the uniform distribution over states. 
 
-lets say 2^N is huge (as it normally is)
-then E' =
-
-
-var(E') = (1/n) var(2^N p_i E_i)
-
-std(E') = \sqrt(2^N/n) std(p_i E_i)
-
-
-var(p_i E_i) = 2^{-N} \sum_i (p_i E_i)^2 - 2^{-2 N} (\sum_i p_i E_i)^2
-
-var(p_i E_i) = 2^{-N} \sum_i (p_i E_i)^2 - 2^{-2 N} (E)^2
-
-var(p_i E_i) = 2^{-N} (\sum_i (p_i E_i)^2 - 2^{-N} (E)^2)
-
-
-std(E') = \sqrt(1/n) sqrt(\sum_i (p_i E_i)^2 - 2^{-N} (E)^2)
-
-
-How can we reduce this variance?
-
-What if we sample (p_i E_i)
-
-E' = <E_i>_p_i
-
-var(E') = (1/n) \sum_{i ~ p_i}
-
-sample according to 
-
-
-
-
-
-
-
-For each basis state $\sigma$ untrained neural networks return logits, $l_\sigma$. 
-These are passed to a softmax to obtain a probability for each state:
+What should we set $q(x)$ to in order to minimize the variance? Well we can actually compute this using Lagrange multipliers:
 $$
-p(\bm{\sigma}) = \frac{\exp(l_{\bm{\sigma}})}{\sum_{\bm{\sigma}'} \exp(l_{\bm{\sigma}' })} = \frac{\exp(l_{\bm{\sigma}})}{Z}
-$$
-We can then obtain a real wavefunction by taking the square root. 
-$$
-\psi(\bm{\sigma}) =\frac{\exp(l_{\bm{\sigma}}/2)}{\sqrt{Z}}
-$$
-To understand the entanglement within randomly initialized neural network states, we begin by assuming random logits, beginning with the assumption that our logits are initially Gaussian, with mean $\mu$ and standard deviaion $\sigma$.
- This could arise from the central limit theorem (\textbf{is this the case at initialization for us?}). We immediately see that $\mu$ is of no import, as the partition function within softmax removes it. This leaves $\sigma$ as the parameter of interest.  
-
-We can immediately gain some traction by examining limiting cases. $\sigma \rightarrow 0$ would correspond to equal probability for all basis-states.
- Note this wavefunction is simply 
-$$
-|\psi\rangle = \mathcal{N} \bigotimes_i \left( \sum_{s_i} |s_i\rangle  \right)
-$$
-Where above $i$ indexes sites, while $s_i$ enumerates each possible local state. $\mathcal{N}$ is an overall normalization. By using a suitable local basis change, this can be written as a product state, and therefore has no entanglement.
-
-In the opposite limit of $\sigma \rightarrow \infty$, one basis-state dominates the others, and we have
-$$
-\psi(\bm{\sigma}) =\delta(\bm{\sigma}, \argmax_{\bm{\sigma}'} l_{\bm{\sigma}'}) 
-$$
-And again we have no entanglement, a our wavefunction is again a product state (assuming a product state basis). 
-
-Between these two extremes, we expect some growth and decay of entanglement. 
-
-We can compute the n-Renyi entropy using the replica trick, evaluating the expectation value of twist operators on an n-fold copy of the original state. For simplicity, we focus on the 2-Renyi entropy below, where the twist operator takes the form of a swap.
-
-by doubling the Hilbert space and computing the expectation of the swap operator:
-$$
-Tr[\rho_A^2] = \langle \psi | \langle \psi | \text{Swap}_A |\psi \rangle | \psi \rangle
-$$
-Where $\text{Swap}_A$ acts as follows:
-$$
-\text{Swap}_A |\bm{\sigma}_A \bm{\sigma}_B \rangle | \bm{\sigma}'_{A} \bm{\sigma}'_{B} \rangle = |\bm{\sigma}'_A \bm{\sigma}_B \rangle | \bm{\sigma}_{A} \bm{\sigma}'_{B} \rangle
-$$
- Writing this outin terms of our wavefunction,
-\begin{multline}
-\langle \text{Swap}_A \rangle = \sum_{\bm{\sigma}_{A_i}, \ \bm{\sigma}_{B_i}} \langle \sigma_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} | \langle \sigma_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}} | \\
-\frac{e^{(l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}})/2}}{Z} \cdot \frac{e^{(l_{\bm{\sigma}_{A_3}, \bm{\sigma}_{B_3}} + l_{\bm{\sigma}_{A_4}, \bm{\sigma}_{B_4}})/2}}{Z} \\
- | \sigma_{\bm{\sigma}_{A_4}, \bm{\sigma}_{B_3}} \rangle | \sigma_{\bm{\sigma}_{A_3}, \bm{\sigma}_{B_4}} \rangle
-\end{multline}
-Which yields
-$$
-\langle \text{Swap}_A \rangle = \sum_{\bm{\sigma}_{A_i}, \ \bm{\sigma}_{B_i}} 
-\frac{e^{(l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}})/2}}{Z} \cdot \frac{e^{(l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_2}})/2}}{Z}
+\mathcal{L} = \sum_{\sigma} q(\sigma)^{-1} |\Psi_\theta(\sigma)|^4 E_{loc}(\sigma)^2 - \langle E_{loc}(\sigma)\rangle_\sigma^2 - \lambda (1 - \sum_{\sigma} q(\sigma))
 $$
 
-Now we can attempt to approximate this expression. Take the regions of interest, $A$ and $B$, to be of equal size. Each element, $\exp(l_{\bm{\sigma}})$, can be seen as a sample from a log-normal distribution with parameters $\mu$ and $\sigma$. Taking $2^N$ to be large,
-$$
-\frac{Z}{2^N} = \frac{1}{2^N}\sum_{\bm{\sigma}'} \exp(l_{\bm{\sigma}' }) \approx \exp(\mu + \sigma^2 / 2)
-$$
-Where $\exp(\mu + \sigma^2 / 2)$ is the known mean of such a log-normal distribution.
+Set the functional derivative w.r.t. to $q(\sigma)$ to zero, and find
 
-We can now approximate the numerator:
 $$
-e^{(l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_2}})/2}
-$$
-Taking each of the logits as being i.i.d. Gaussian r.v.s with mean $\mu$ and variance $\sigma^2$, we note that
-$$
-(l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_2}})/2 \sim \mathcal{N}(2 \mu, \sigma^2)
-$$
-Therefore 
-$$
-2^{-2N} \sum_{\bm{\sigma}_{A_i}, \ \bm{\sigma}_{B_i}} e^{(l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_2}})/2} \approx \exp(2\mu + \sigma^2 / 2)
+0 = -q(\sigma)^{-2} | \Psi_\theta(\sigma)|^4 E_{loc}(\sigma)^2 + \lambda 
 $$
 
-Combining these, we see that 
+Which tells us that the variance is minimized for 
+
 $$
-\langle \text{Swap}_A \rangle = \frac{\sum_{\bm{\sigma}_{A_i}, \ \bm{\sigma}_{B_i}} e^{(l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_2}} + l_{\bm{\sigma}_{A_2}, \bm{\sigma}_{B_1}} + l_{\bm{\sigma}_{A_1}, \bm{\sigma}_{B_2}})/2}}{Z^2}\approx \frac{\exp(2\mu + \sigma^2 / 2)}{\exp(2\mu + \sigma^2)}
-$$
-And so 
-$$
-\langle \text{Swap}_A \rangle \approx \exp(-\sigma^2 /2)
-$$
-We can perform this type of analysis for each n-Renyi entropy, finding for each
-$$
-\langle \text{n-Twist}_A \rangle \approx \frac{\exp(2\mu + n \sigma^2 / 4)}{\exp(2\mu + n \sigma^2 / 2)} = \exp(-n \sigma^2 / 4)
+q(\sigma) \propto |\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)
 $$
 
-The applicability of this approximation breaks down with as the variance of the relevant log-nomral distributions grow. Within log-normal distributions, the variance scales as $(\exp(\sigma^2)-1)\exp(2 \mu + \sigma^2)$. Therefore we expect breakdown as $\sigma$ grows.
+We don't have access to this exactly, but we can have access to 
+$$
+|\Psi_\theta(\sigma)|^2
+$$. 
+We just need to go from an encoder network (which maps states to numbers) to a decoder network. 
+
+## Autoregressively Decoding Quantum States
+
+This is where language models become relevant -- encoders (like BERT) can embed sentences into vector spaces, but we would also like to generate text. The way we typically do this is using autoregressive sampling. 
+
+This sounds fancy, but really it's just an application of the chain rule of probability:
+$$
+p(\vec{\sigma}) = p(\sigma_1) p(\sigma_2 | \sigma_1) p(\sigma_3 | \sigma_2, \sigma_1) \cdot \cdot \cdot p(\sigma_N | \sigma_{N-1}, ..., \sigma_2, \sigma_1)
+$$
+
+We'll use a transformer to do this. It'll have two outputs: the log probability, and the phase contribution for each term in the sequence. 
+This way, we can simulate sampling from the wavefunction, and evaluate the phase and amplitude of any spin sequence. 
+
+In a future post, we'll go over why we would use a transformer for this, and show the specific benefits. 
