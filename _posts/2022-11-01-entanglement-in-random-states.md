@@ -100,11 +100,7 @@ $$
 \frac{2^{2n}}{n} Var[|\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)]
 $$
 
-Already that exponential term to the left sucks. But maybe every term within the $Var[]$ is nearly identical? Unfortunately not. Let's look at the ground state of the transverse field Ising model at criticality 
-
-[PLOT DISTRIBUTION OF inner term here]
-
-Things don't look great -- how can we fix them? Well, the problem is clearly in how we sample the states. From the variance expression we see that we'll need an exponential number of samples to control the uncertainty in our energy estimates. Let's kill this off using importance sampling. 
+Already that exponential term to the left sucks -- how can we fix this? Well, the problem is clearly in how we sample the states. From the variance expression we see that we'll need an exponential number of samples to control the uncertainty in our energy estimates. Let's kill this off using importance sampling. 
 
 ## Importance Sampling
 
