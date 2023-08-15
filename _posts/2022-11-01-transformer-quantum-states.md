@@ -35,7 +35,8 @@ Neural networks have been useful in the context of lattice models. Why is this?
 Suppose I have some lattice Hamiltonian, $H$, acting on $N$ spins, and I'd like to approximate its ground state. 
 Starting with the same approach, suppose we define some parameterized model $\Psi_\theta(\sigma)$ which seems plausible (or has enough capacity to model whatever the answer might be). We simply define a 
 
-Like before, we now want to find the parameters $\theta$ which minimize $\langle \Psi_\theta | H | \Psi_\theta\rangle$.
+Like before, we now want to find the parameters $\theta$ which minimize 
+$$\langle \Psi_\theta | H | \Psi_\theta\rangle$$.
 
 We can simplify this a bit by writing it as follows
 
@@ -69,19 +70,19 @@ Let's try sampling uniformly over $n$ states, $\{ \sigma_i \}$ to get an energy 
 An unbiased estimator using $n$ uniformly selected samples is given by
 
 $$
-\tilde{E}_n = \frac{2^n}{n} \sum_{i=1}^n |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i)
+\tilde{E}_n = \frac{2^L}{n} \sum_{i=1}^n |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i)
 $$
  
-This is clear, since 
+where $L$ is the number of spins in the chain. This is clear, since 
 
 $$
-\langle \tilde{E}_n \rangle = \frac{2^n}{n} \sum_{i=1}^n \langle |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i) \rangle
+\langle \tilde{E}_n \rangle = \frac{2^L}{n} \sum_{i=1}^n \langle |\Psi_\theta(\sigma_i)|^2 E_{loc}(\sigma_i) \rangle
 $$
 
-which is 
+which is (averaging over all $2^L$ unique spin combinations, $\sigma'$)
 
 $$
-\frac{2^n}{n} \sum_{i=1}^n \left(\frac{1}{2^n}\sum_{\sigma'} |\Psi_\theta(\sigma')|^2 E_{loc}(\sigma') \right) = 
+\frac{2^L}{n} \sum_{i=1}^n \left(\frac{1}{2^L}\sum_{\sigma'} |\Psi_\theta(\sigma')|^2 E_{loc}(\sigma') \right) = 
 \sum_{\sigma'} |\Psi_\theta(\sigma')|^2 E_{loc}(\sigma') 
 $$
 
@@ -97,10 +98,14 @@ We'll need our gradients to be pretty accurate, so let's look at the variance of
 Well, the variance of a sample of $n$ elements is simply 
 
 $$
-\frac{2^{2n}}{n} Var[|\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)]
+\frac{2^{2L}}{n} Var[|\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)]
 $$
 
-Already that exponential term to the left sucks -- how can we fix this? Well, the problem is clearly in how we sample the states. From the variance expression we see that we'll need an exponential number of samples to control the uncertainty in our energy estimates. Let's kill this off using importance sampling. 
+Already that exponential term to the left sucks -- how can we fix this? Well, the problem is clearly in how we sample the states. From the variance expression, we see that in order to control the uncertainty in our energy estimates, we'll need the number of samples to be exponential in the length of the chain. 
+
+Basically, this isn't going to happen. So what can we do about this exponential term?
+
+Let's kill it off using importance sampling. 
 
 ## Importance Sampling
 
