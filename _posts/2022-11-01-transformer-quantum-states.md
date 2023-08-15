@@ -103,7 +103,7 @@ $$
 
 Already that exponential term to the left sucks -- how can we fix this? Well, the problem is clearly in how we sample the states. From the variance expression, we see that in order to control the uncertainty in our energy estimates, we'll need the number of samples to be exponential in the length of the chain. 
 
-Basically, this isn't going to happen. So what can we do about this exponential term?
+Again, we'd be stuck waiting for the lifetime of the universe for our estimate of the energy to come anywhere near its actual value. So what can we do about this exponential term?
 
 Let's kill it off using importance sampling. 
 
@@ -121,12 +121,15 @@ $$
 
 So far, we've taken $q(x)$ to be the uniform distribution over states. 
 
-What should we set $q(x)$ to in order to minimize the variance? Well we can actually compute this using Lagrange multipliers:
+What should we set $q(x)$ to in order to minimize the variance? Well we can actually compute this using Lagrange multipliers: 
+
 $$
 \mathcal{L} = \sum_{\sigma} q(\sigma)^{-1} |\Psi_\theta(\sigma)|^4 E_{loc}(\sigma)^2 - \langle E_{loc}(\sigma)\rangle_\sigma^2 - \lambda (1 - \sum_{\sigma} q(\sigma))
 $$
 
-Set the functional derivative w.r.t. to $q(\sigma)$ to zero, and find
+Above, in the lagrangian, we have the expression for the variance of our estimate when we sample from $q(\sigma)$, followed by an expression forcing $q(\sigma)$ to be normalized.
+
+To find the distribution which minimizes the variance of an energy estimate, set the functional derivative w.r.t. to $q(\sigma)$ to zero, and find
 
 $$
 0 = -q(\sigma)^{-2} | \Psi_\theta(\sigma)|^4 E_{loc}(\sigma)^2 + \lambda 
@@ -138,7 +141,7 @@ $$
 q(\sigma) \propto |\Psi_\theta(\sigma)|^2 E_{loc}(\sigma)
 $$
 
-We don't have access to this exactly, but we can have access to 
+We don't have access to this probability distribution exactly, but if we change our setup, we can have access to 
 $$
 |\Psi_\theta(\sigma)|^2
 $$. 
@@ -146,12 +149,14 @@ We just need to go from an encoder network (which maps states to numbers) to a d
 
 ## Autoregressively Decoding Quantum States
 
-This is where language models become relevant -- encoders (like BERT) can embed sentences into vector spaces, but we would also like to generate text. The way we typically do this is using autoregressive sampling. 
+So far I've been considering functions which map states to amplitudes -- (complex numbers). But that doesn't help us with the sampling part, and without that, we're back to waiting until the sun explodes.
 
-This sounds fancy, but really it's just an application of the chain rule of probability:
+This is where language models become relevant -- encoders (like BERT) can embed sentences into vector spaces, but we would also like to generate text. The way we typically do this is by using autoregressive sampling, which sounds fancy, but really it's just an application of the chain rule of probability:
 $$
 p(\vec{\sigma}) = p(\sigma_1) p(\sigma_2 | \sigma_1) p(\sigma_3 | \sigma_2, \sigma_1) \cdot \cdot \cdot p(\sigma_N | \sigma_{N-1}, ..., \sigma_2, \sigma_1)
 $$
+
+This is what language models do.
 
 We'll use a transformer to do this. It'll have two outputs: the log probability, and the phase contribution for each term in the sequence. 
 This way, we can simulate sampling from the wavefunction, and evaluate the phase and amplitude of any spin sequence. 
