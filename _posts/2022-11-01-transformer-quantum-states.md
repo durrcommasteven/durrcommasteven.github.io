@@ -24,7 +24,7 @@ Let's outline the way these neural network wavefunctions might be useful.
 
 Wavefunctions are defined over basis states, $\Psi(\sigma)$, where each $\sigma$ is some basis element. 
 for a particle in a box, $\sigma$ would be spatial position, $x$, and $\Psi(x)$ maps positions to complex numbers. 
-For a 1d spin model, $\sigma$ would be a given spin configuration (like $\{0,1,1,1,0,1\}$). 
+For a 1d spin model, $\sigma$ would be a given spin configuration (like $[0,1,1,1,0,1]$). 
 Here, $\Psi(\sigma)$ effectively maps sequences of 1's and 0's to complex numbers. 
 
 If you wanted to describe the ground state of the particle in a box model, you might just take $\Psi(x)$ to be some physically plausible candidate, or some sum of candidates, and use the variational principle to minimize the energy. 

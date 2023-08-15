@@ -91,6 +91,7 @@ defaults:
       type: posts
     values:
       layout: single
+      classes: wide
       #layout: splash
       author_profile: true
       read_time: true
