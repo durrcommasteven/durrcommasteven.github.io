@@ -15,7 +15,7 @@ header:
 
 ---
 
-[see the code here](https://github.com/durrcommasteven/flat_tax_plus_ubi){: .btn .btn--warning}
+[see the code here](https://github.com/durrcommasteven/flat_tax_plus_ubi/blob/main/Laffer_june_29.ipynb){: .btn .btn--warning}
 
 I started this project because I wanted to reproduce the Laffer curve -- this is a very famous plot showing tax revenue vs tax rate. Here's the summary:
 1) $t\rightarrow 0$: When the tax rate is zero, the government gets no revenue, because it collects nothing.
