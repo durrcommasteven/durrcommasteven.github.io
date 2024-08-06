@@ -30,7 +30,7 @@ Whenever I hear about the Laffer curve, it's usually described at this level - u
 <img src="{{site.baseurl}}/assets/images/post_4/Laffer_curve_drawing.png" alt="laffer-sketch" style="width:100%">
 <figcaption align = "center"><b>What I imagine the original Laffer curve looked like</b></figcaption>
 </figure>
-I have no idea why it got named after Laffer, because there's no way he was the first person to realize something so obvious. A quick glance at [wikipedia](https://en.wikipedia.org/wiki/Laffer_curve) indicates that he _was_ the first person to claim that we were on the descending side of the peak -- which would just be so unbelievably convenient to believe if you were a rich guy in the 80s who already wanted taxes to be lower.
+I have no idea why it got named after Laffer, because there's no way he was the first person to realize something so obvious. A quick glance at [wikipedia](https://en.wikipedia.org/wiki/Laffer_curve) indicates that he _was_ the first person to claim that we were on the descending side of the peak -- which would just be so unbelievably convenient to believe if you were a rich guy in the 70s who already wanted taxes to be lower.
 
 Anyway, I want to see if I could observe the Laffer curve from some kind of first-principles argument, rather than just an intuitive napkin-sketch. 
 
