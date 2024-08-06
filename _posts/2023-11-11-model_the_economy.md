@@ -18,8 +18,11 @@ header:
 [see the notebook here](https://github.com/durrcommasteven/flat_tax_plus_ubi/blob/main/Laffer_june_29.ipynb){: .btn .btn--warning}
 
 I started this project because I wanted to reproduce the Laffer curve -- this is a very famous plot showing tax revenue vs tax rate. Here's the summary:
+
 1) $t\rightarrow 0$: When the tax rate is zero, the government gets no revenue, because it collects nothing.
+
 2) $t\rightarrow 1$: Now as the tax rate reaches 1, nobody works (because they get to keep nothing they earn) and so again the government gets no revenue.
+
 3) $0<t<1$: Here, people keep some of what they earn, and so they are incentivized to work. Meanwhile, the government gets a cut as well.
 
 Whenever I hear about the Laffer curve, it's usually described at this level - usually there's a story involving Laffer drawing something like a graph on a napkin for Reagan or somebody.
