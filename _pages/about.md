@@ -2,6 +2,7 @@
 permalink: /about/
 title: "Hi! I'm Steve"
 ---
+I'm currently a Senior Scientist at STR, where I apply machine learning, statistics, and physics to national security challenges.
 
 I have a PhD in theoretical physics from UCLA, and a BA from Cornell double majoring in physics and math. 
 I've also spent summers as a SWE intern Google; one at Google my Business, and one trying to make certain experiments work at Google Quantum AI.
