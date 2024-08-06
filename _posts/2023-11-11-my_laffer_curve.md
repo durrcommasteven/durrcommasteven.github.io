@@ -10,8 +10,8 @@ tags:
 
 excerpt: ""
 header:
-  overlay_image: /assets/images/post_3/napkin_drawing.jpg
-  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  overlay_image: /assets/images/post_4/napkin_drawing.jpg
+  overlay_filter: 0.2 # same as adding an opacity of 0.5 to a black background
 
 ---
 
