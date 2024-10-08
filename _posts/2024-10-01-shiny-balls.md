@@ -22,7 +22,7 @@ A while ago my friend mentioned how it would be cool to code up a ray tracer. I 
 The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.png" alt="scientific-diagram" style="width:100%">
 <figcaption align = "center"><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
 </figure>
 
@@ -64,7 +64,7 @@ $$
 Then to make sure our ray is actually hitting inside the triangle, we just need to check that $a>=0$, $b>=0$, $a+b <= 1$. And finally, we want the ray to be moving forward $c>=0$.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/math_drawing.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/math_drawing.png" alt="vector-drawing" style="width:100%">
 </figure>
 
 # Shading the Room, Shining the Balls 
@@ -73,7 +73,7 @@ I don't know what it is about these rooms I was making early on, but they were 1
 
 #example of cursed room 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/cursed_room.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/cursed_room.png" alt="cursed-room" style="width:100%">
 <figcaption align = "center"><b>An example of a cursed room. I think I've had nightmares that took place here.</b></figcaption>
 </figure>
 
@@ -82,7 +82,7 @@ I don't know what it is about these rooms I was making early on, but they were 1
 Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpg" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpg" alt="disco" style="width:100%">
 <figcaption align = "center"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ $$
 $$
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/no_shading_and_shading.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/no_shading_and_shading.png" alt="shading-comparison" style="width:100%">
 <figcaption align = "center"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're seeing.</b></figcaption>
 </figure>
 
@@ -116,7 +116,7 @@ Find your solution with real and positive $c$, and you're done.
 Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/initial_example.gif" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/initial_example.gif" alt="reflection-gif" style="width:100%">
 <figcaption align = "center"><b>Iterative reflections inside an un-cursed room.</b></figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ There, done. Now what?
 Well we can ask ChatGPT to make sculptures for us
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="chatgpt-scultpures" style="width:100%">
 <figcaption align = "center"><b>Four sculptures made by o1. <br>(Top left) ChatGPT's embarassing attempt at being deep and making a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT likes spirals (it does look neat).</b></figcaption>
 </figure>
 
@@ -140,7 +140,7 @@ So I coded it up and started making pretty pictures with my ray tracer:
 At iteration 1, we have 4 spheres in a tetrahedron. 
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/app_8.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/app_8.png" alt="apollonian-packing-1" style="width:100%">
 <figcaption align = "center"><b>Generation 1 of an Apollonian sphere packing (4 shiny balls in a tetrahedron).</b></figcaption>
 </figure>
 
@@ -149,7 +149,7 @@ Looks pretty cool. Let's go to generation 2
 ## Iteration 2
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/high-quality-balls.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/high-quality-balls.png" alt="apollonian-packing-2" style="width:100%">
 <figcaption align = "center"><b>Generation 2 of an Apollonian sphere packing (shiny balls are adding up).</b></figcaption>
 </figure>
 
@@ -164,20 +164,20 @@ Already these visualizations raise some interesting questions, like
 While my code allows for GPU use, I'm using my tiny GPU-less laptop, and after generation 2 it starts to complain.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/num_spheres.png" alt="laffer-sketch" style="width:50%">
+<img src="{{site.baseurl}}/assets/images/post_5/num_spheres.png" alt="apollonian-growth" style="width:50%">
 </figure>
 
 As you increase the generations of this fractal, the number of spheres increases exponentially. Here's just the spheres which make up the 6th generation.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/last_gen_6.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/last_gen_6.png" alt="apollonian-packing-6-only" style="width:100%">
 <figcaption align = "center"><b>Even after 1000 reflections, the light rays are getting stuck between spheres <br>(note the dark shadows between nearby spheres).</b></figcaption>
 </figure>
 
 This kind of sucks, and although it's certainly possible to plot these sphere packings at high fractal generations, I'm being maximally dumb here, and using essentially no tricks to speed things up. Ray tracing is also just known for being slow. Tons of rays just get stuck inside this massive sphere of spheres – that's all the black regions between them. 
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/other_persons_apollonian.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/other_persons_apollonian.png" alt="apollonian-simple" style="width:100%">
 <figcaption align = "center"><b><a href="https://observablehq.com/@esperanc/3d-apollonian-sphere-packings" target="_blank">This blog post</a> plots Apollonian sphere packing in a much more efficient way (not using ray tracing).</b></figcaption>
 </figure>
 
@@ -188,21 +188,21 @@ Let's try to get a fractal some other way – actually, let's try to _use_ those
 Remember that first generation with the tetrahedron? Well look at the middle – there are three spheres being reflected. Each of those spheres is reflecting its own smaller set of three spheres, etc. This is feeling pretty fractal-y
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/app_8_emph.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/app_8_emph.png" alt="tetrahedron" style="width:100%">
 <figcaption align = "center"><b>What's going on in here?</b></figcaption>
 </figure>
 
 Look between those three spheres. There are some rays that are still bouncing around a few generations, which show up as black. This is clearer if we plot just the rays which haven't hit a wall yet. 
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/serpinski_zoom_1.0_inverted_app.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/serpinski_zoom_1.0_inverted_app.png" alt="inverted_reflections" style="width:100%">
 <figcaption align = "center"><b>All the rays which are still reflecting after ~ 10 reflections iterations (in black).</b></figcaption>
 </figure>
 
 This looks quite a bit like a Sierpinski triangle – and it looks that way because it's being constructed the same way. Consider how repeated reflections work here. When a bunch of rays go between our four spheres, each sphere reflects them at the three other spheres. This gives us three dark patches in our image. But each of these dark gaps is reflected at three other spheres too, etc. This leads to an iterative construction that exactly matches that of a Sierpinski triangle.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/Sierpinski_triangle_evolution.png" alt="laffer-sketch" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/Sierpinski_triangle_evolution.png" alt="sierpinski" style="width:100%">
 <figcaption align = "center"><b>Sierpinski triangles are constructed using the same rule that determines how reflections work in the tetrahedron of shiny balls.</b></figcaption>
 </figure>
 
@@ -210,16 +210,16 @@ It turns out there's a close relationship between apollonian gaskets (which our 
 
 <figure style="text-align: center;">
     <div style="display: flex; justify-content: center;">
-        <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_7.34145301536491.png" alt="laffer-sketch" style="width: 50%; margin-right: 10px;">
-        <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_7.34145301536491.png" alt="laffer-sketch" style="width: 50%;">
+        <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_7.34145301536491.png" alt="zoom1" style="width: 50%; margin-right: 10px;">
+        <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_7.34145301536491.png" alt="inv1" style="width: 50%;">
     </div>
     <figcaption><b>Prepare your body for entering the sphere. The ball reflections (left) and the still-reflecting rays in black (right).</b></figcaption>
 </figure>
 
 <figure style="text-align: center;">
     <div style="display: flex; justify-content: center;">
-        <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_6992.9295994298245.png" alt="laffer-sketch" style="width: 50%; margin-right: 10px;">
-        <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_6992.9295994298245.png" alt="laffer-sketch" style="width: 50%;">
+        <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_6992.9295994298245.png" alt="zoom2" style="width: 50%; margin-right: 10px;">
+        <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_6992.9295994298245.png" alt="inv2" style="width: 50%;">
     </div>
     <figcaption><b>The sphere pattern at roughly 7000x zoom. Conveniently, since this is a fractal, you do get the picture at this point. It's all the same, literally.</b></figcaption>
 </figure>
