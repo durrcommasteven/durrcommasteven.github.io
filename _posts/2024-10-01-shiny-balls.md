@@ -22,7 +22,7 @@ A while ago my friend mentioned how it would be cool to code up a ray tracer. I 
 The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.jpg" alt="scientific-diagram" style="width:35%">
+<img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.jpg" alt="scientific-diagram" style="width:40%">
 <figcaption><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
 </figure>
 
@@ -91,7 +91,7 @@ $$
 
 This brings us to our second problem: Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:50%">
 <figcaption style="text-align: center;"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
 </figure>
@@ -128,7 +128,7 @@ Well, we can ask ChatGPT to make sculptures for us:
 
 <figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="chatgpt-scultpures" style="width:100%">
-<figcaption style="text-align: center;"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarassing attempt at being all deep and making a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
+<figcaption style="text-align: center;"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarassing attempt at being all deep and trying to make a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
 </figure>
 
 # In Search of Fractals
