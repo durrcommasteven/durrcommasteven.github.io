@@ -67,7 +67,7 @@ $$
 
  - $t$: A flat tax rate (flat for simplicity), which tells us what fraction of a person's salary the government takes.
 
- # Computing Production
+# Computing Production
 
 Now let's figure out how much each person will work: $x^*$
 
