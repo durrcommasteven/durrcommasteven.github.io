@@ -128,7 +128,7 @@ Well, we can ask ChatGPT to make sculptures for us:
 
 <figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="chatgpt-scultpures" style="width:100%">
-<figcaption style="text-align: center;"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarassing attempt at being all deep and trying to make a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
+<figcaption style="text-align: center;"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarrassing attempt at being all deep and trying to make a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
 </figure>
 
 # In Search of Fractals
