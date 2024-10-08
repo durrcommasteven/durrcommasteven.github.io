@@ -67,27 +67,16 @@ Then to make sure our ray is actually hitting _inside_ the triangle, we just nee
 
 I don't know what it is about these rooms I was making early on, but they were 100% cursed. Like something about them was off. 
 
-#example of cursed room 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/cursed_room.png" alt="cursed-room" style="width:100%">
 <figcaption align = "center"><b>An example of a cursed room. I think I've had nightmares that took place here.</b></figcaption>
 </figure>
 
-## Disco Balls
-
-Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
-
-<figure>
-<img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:100%">
-<figcaption align = "center"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
-</figure>
-
 We need a solution
 
-Each wall in my room is its own shade of gray. But this alone really does not look good. Depth isn't really conveyed well. 
+Each wall in my room has its own shade of gray. But this alone really does not look good. Depth isn't really conveyed well. 
 
-Humans rely really heavily on shading to infer depth, so let's add some shading in here. 
-After a little tinkering, I settled on this function to make things look pretty 
+Humans rely really heavily on shading to infer depth, so let's add some shading in here. The further away a point on the wall is from the observer, the darker its shade will be. After a little tinkering, I settled on this function to make things look pretty 
 
 $$
 \text{shade} = \frac{\text{init_shade}}{(0.1 + \text{wall_distance}/2)^{1.2}}
@@ -98,19 +87,28 @@ $$
 <figcaption align = "center"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're looking at.</b></figcaption>
 </figure>
 
+## Disco Balls
+
+This brings us to our second problem: Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
+
+<figure>
+<img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:50%">
+<figcaption align = "center"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
+</figure>
+
 Thankfully, reflecting things off a sphere might be even easier than reflecting them off a triangle. Just solve for when (if ever) the ray is a distance $r$ (the radius) from the center of a sphere, $\vec{x}$. 
 
 $$ 
 ||(\vec{pos.} + c \cdot \vec{v}) - \vec{x}||^2 = r^2
 $$
 
-We solve this with the regular old quadratic formula, taking $|v| = 1$ and writing $\vec{x}^* = \vec{x} - \vec{p}$ gives us:
-
+Taking $$||v|| = 1$$ and writing $$\vec{x}^* = \vec{x} - \vec{pos.}$$ gives us:
 $$
 c^2 - 2 c \vec{v} \cdot \vec{x}^* + (||\vec{x}^*||^2 -r^2) = 0
 $$
+Then we can solve for $c$ with the regular old quadratic formula. 
 
-Find your solution with real and positive $c$, and you're done. To reflect, just negate the component of the ray that's along the sphere's radial direction.
+Once you've found your solution with real and positive $c$, and you're done. To reflect, just negate the component of the ray that's along the sphere's radial direction.
 
 Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
 
@@ -126,11 +124,11 @@ Putting this all together, we just have to place our spheres, and start reflecti
 
 There, done. Now what? 
 
-Well we can ask ChatGPT to make sculptures for us
+Well, we can ask ChatGPT to make sculptures for us:
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="chatgpt-scultpures" style="width:100%">
-<figcaption align = "center"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarassing attempt at being deep and making a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT likes spirals (it does look neat).</b></figcaption>
+<figcaption align = "center"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarassing attempt at being all deep and making a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
 </figure>
 
 # In Search of Fractals
@@ -163,7 +161,7 @@ Already these visualizations raise some interesting questions, like
 - What is the fractal dimension of this [sphere packing](https://www.worldscientific.com/doi/abs/10.1142/S0218348X94000739)?
 - And why do I want to bite into these spheres so much?
 
-## Higher Gens
+## Higher Generations
 
 While my code allows for GPU use, I'm using my tiny GPU-less laptop, and after generation 2 it starts to complain.
 
@@ -171,14 +169,14 @@ While my code allows for GPU use, I'm using my tiny GPU-less laptop, and after g
 <img src="{{site.baseurl}}/assets/images/post_5/num_spheres.png" alt="apollonian-growth" style="width:50%">
 </figure>
 
-As you increase the generations of this fractal, the number of spheres increases exponentially. Here's just the spheres which make up the 6th generation.
+As you increase the generations of this fractal, the number of spheres increases exponentially. Here are the spheres which make up the 6th generation shown by themselves:
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/last_gen_6.png" alt="apollonian-packing-6-only" style="width:100%">
 <figcaption align = "center"><b>Even after 1000 reflections, the light rays are getting stuck between spheres <br>(note the dark shadows between nearby spheres).</b></figcaption>
 </figure>
 
-This kind of sucks, and although it's certainly possible to plot these sphere packings at high fractal generations, I'm being maximally dumb here, and using essentially no tricks to speed things up. Ray tracing is also just known for being slow. Tons of rays just get stuck inside this massive sphere of spheres – that's all the black regions between them. 
+This kind of sucks, and although it's certainly possible to plot these sphere packings at high fractal generations, I'm being maximally dumb here -- using essentially no tricks to speed things up. Ray tracing is known for being slow, and for our sphere packing, tons of rays just get stuck bouncing around between the collection of spheres – that's what all the jet black regions between them are. 
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/other_persons_apollonian.png" alt="apollonian-simple" style="width:100%">
@@ -189,7 +187,7 @@ Let's try to get a fractal some other way – actually, let's try to _use_ those
 
 # Secret Sierpinski 
 
-Remember that first generation with the tetrahedron? Well look at the middle – there are three spheres being reflected. Each of those spheres is reflecting its own smaller set of three spheres, etc. This is feeling pretty fractal-y
+Remember that first generation with the tetrahedron? Well look at the middle – there are three spheres being reflected. Each of those spheres is reflecting its own smaller set of three spheres, etc. This is feeling pretty fractal-y.
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/app_8_emph.png" alt="tetrahedron" style="width:100%">
@@ -217,7 +215,7 @@ It turns out there's a close relationship between apollonian gaskets (which our 
         <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_7.34145301536491.png" alt="zoom1" style="width: 50%; margin-right: 10px;">
         <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_7.34145301536491.png" alt="inv1" style="width: 50%;">
     </div>
-    <figcaption><b>Prepare your body for entering the sphere. The ball reflections (left) and the still-reflecting rays in black (right).</b></figcaption>
+    <figcaption><b>Prepare your body for entering the sphere (7x zoom).<b>To the left are the full reflection surfaces, and to the right we plot the still-reflecting in black.</b></figcaption>
 </figure>
 
 <figure style="text-align: center;">
@@ -225,14 +223,14 @@ It turns out there's a close relationship between apollonian gaskets (which our 
         <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_6992.9295994298245.png" alt="zoom2" style="width: 50%; margin-right: 10px;">
         <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_6992.9295994298245.png" alt="inv2" style="width: 50%;">
     </div>
-    <figcaption><b>The sphere pattern at roughly 7000x zoom. Conveniently, since this is a fractal, you do get the picture at this point. It's all the same, literally.</b></figcaption>
+    <figcaption><b>The sphere pattern at roughly 7000x zoom.<b>Conveniently, since this is a fractal, you do get the picture at this point. It's all the same, literally.</b></figcaption>
 </figure>
 
 # Fractal Zoom
 
-Now I know what you're thinking: "does this mean that if I get 4 ball-bearings together, go into a white room, make myself invisible, and zoom in between them, I'll see a fractal??"
+Now I know what you're thinking: "does this mean that if I get 4 ball-bearings together, go into a white room, make myself invisible, and use an also-invisible microscope to zoom in between them, I'll see a fractal??"
 
-I think so, but that whole procedure seems really involved. How about we zoom in with this ray tracer thing and see what happens. (I've always wanted to make one of those videos zooming into a fractal)
+I think so, but that whole procedure seems really involved. How about we zoom in with this ray tracer thing and see what happens. (Also, I've always wanted to make one of those fractal-zoom videos)
 
 {% include video id="s5R1V4rIczk" provider="youtube" %}
 
