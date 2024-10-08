@@ -52,14 +52,12 @@ The math behind ray tracing really is easy. If you can break your surface into t
 
 ## The Math (_skip if you don't care_)
 
-A given ray starts at a position, $\vec{pos}$, and points in a direction $\vec{v}$ (we'll take $||v||=1$). 
-
-Basically, we just want to solve for how far a ray has to go before it hits the plane defined by the triangle (that's the variable $c$ in the following):
+A given ray starts at a position, $\vec{pos}$, and points in a direction $\vec{v}$ (we'll take $||v||=1$). Basically, we just want to solve for how far a ray has to go before it hits the plane defined by the triangle (that's the variable $c$ in the following):
 $$
 \vec{pos.} + c \cdot \vec{v} = \vec{z}_1 + a*(\vec{z}_2 - \vec{z}_1) + b*(\vec{z}_3 - \vec{z}_1)
 $$
 
-Then to make sure our ray is actually hitting inside the triangle, we just need to check that $a>=0$, $b>=0$, $a+b <= 1$. And finally, we want the ray to be moving forward $c>=0$.
+Then to make sure our ray is actually hitting _inside_ the triangle, we just need to check that $$a \geq 0$$, $$b \geq 0$$, $a+b \leq 1$. Finally, we want the ray to be moving forward (check that $$c \geq 0$$).
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/vectors.png" alt="vector-drawing" style="width:100%">
@@ -109,13 +107,18 @@ We solve this with the regular old quadratic formula, taking $|v| = 1$ and writi
 $$
 c^2 - 2 c \vec{v} \cdot \vec{x}^* + (||\vec{x}^*||^2 -r^2) = 0
 $$
-Find your solution with real and positive $c$, and you're done. 
+Find your solution with real and positive $c$, and you're done. To reflect, just negate the component of the ray that's along the sphere's radial direction.
 
 Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/initial_example.gif" alt="reflection-gif" style="width:100%">
-<figcaption align = "center"><b>Iterative reflections inside an un-cursed room.</b></figcaption>
+<img src="{{site.baseurl}}/assets/images/post_5/example_1.gif" alt="reflection-1-gif" style="width:100%">
+<figcaption align = "center"><b>Iterative reflections from spheres embedded in the walls of an un-cursed room.</b></figcaption>
+</figure>
+
+<figure>
+<img src="{{site.baseurl}}/assets/images/post_5/example_2.gif" alt="reflection-2-gif" style="width:100%">
+<figcaption align = "center"><b>More random spheres bouncing light around.</b></figcaption>
 </figure>
 
 There, done. Now what? 
