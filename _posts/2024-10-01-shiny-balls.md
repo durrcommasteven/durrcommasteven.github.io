@@ -23,7 +23,7 @@ The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their resp
 
 <figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.jpg" alt="scientific-diagram" style="width:35%">
-<figcaption style="text-align: center;"><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
+<figcaption><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
 </figure>
 
 Now it turns out that this is, of course, not how vision works. Thanks to modern science, we all now know that we're in a simulation, and that our optic nerves are mere lines of code in a supercomputer which, when it finally finishes updating, will restart and end our collective existence. 
