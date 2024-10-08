@@ -81,7 +81,7 @@ I don't know what it is about these rooms I was making early on, but they were 1
 Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpg" alt="disco" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:100%">
 <figcaption align = "center"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
 </figure>
 
