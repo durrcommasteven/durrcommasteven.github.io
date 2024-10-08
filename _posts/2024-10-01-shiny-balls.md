@@ -15,7 +15,6 @@ header:
 
 ---
 
-[see the notebook here](https://github.com/durrcommasteven/RayTracer/blob/main/ray_tracing.ipynb){: .btn .btn--warning}
 
 A while ago my friend mentioned how it would be cool to code up a ray tracer. I agreed, it did seem like a cool thing to do, and so I made one. I think the exciting thing about ray tracing is how intuitive it is. You hear about how it works, and immediately you feel like you know how to make one. In fact, it's so intuitive that we kind of invented it before we figured out how vision actually works.
 
@@ -23,14 +22,14 @@ The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their resp
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.jpg" alt="scientific-diagram" style="width:40%">
-<figcaption><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
+<figcaption><b>A scientific diagram presumably explaining how emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
 </figure>
 
 Now it turns out that this is, of course, not how vision works. Thanks to modern science, we all now know that we're in a simulation, and that our optic nerves are mere lines of code in a supercomputer which, when it finally finishes updating, will restart and end our collective existence. 
 
 But before the great reboot occurs, we all need something to occupy our time. This brings us back to videogames, 3D graphics, and ray tracing. 
 
-Just like emission theory, ray-tracing (also spelled (by me – depending on which one I want to use) raytracing) is a way of generating graphics by simulating the light rays 'leaving' an eye. Despite the ancient philosophers being wrong about the underlying physics, it turns out that ray-tracing totally works as a way of generating images.
+Just like emission theory, ray tracing (also spelled (by me – depending on which one I want to use) ray-tracing) is a way of generating graphics by simulating the light rays 'leaving' an eye. Despite the ancient philosophers being wrong about the underlying physics, it turns out that ray-tracing totally works as a way of generating images.
 
 In essence, the only photons that actually matter when you see something are the ones that are going to hit your eyeball. And if you time-reverse these, they're leaving your eyeball – bam emission theory (and ray-tracing). 
 
@@ -48,7 +47,9 @@ The spheres will be perfectly reflective, and the walls will be perfectly absorb
 
 # Coding up Ray Tracing 
 
-The math behind ray tracing really is easy. If you can break your surface into triangles, then you basically take your rays, find if they intersect with your triangles, and reflect or absorb as desired. 
+[see the notebook here](https://github.com/durrcommasteven/RayTracer/blob/main/ray_tracing.ipynb){: .btn .btn--warning}
+
+The math behind ray tracing really is easy. If you can break your surface into triangles, then you basically take your rays, find if they intersect with your triangles, and reflect or absorb as desired.
 
 ## The Math (_skip if you don't care_)
 
@@ -63,9 +64,11 @@ Then to make sure our ray is actually hitting _inside_ the triangle, we just nee
 <img src="{{site.baseurl}}/assets/images/post_5/vectors.png" alt="vector-drawing" style="width:100%">
 </figure>
 
+We now know where the ray is -- what triangle it bumped into. Either I'll either assign the ray the shade associated with that point on the triangle, or I'll update $\vec{v}$ to reflect it.
+
 # Shading the Room, Shining the Balls 
 
-I don't know what it is about these rooms I was making early on, but they were 100% cursed. Like something about them was off. 
+I don't know what it is about these rooms I was making early on, but they were 100% cursed. Something about them was off. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/cursed_room.png" alt="cursed-room" style="width:100%">
@@ -76,7 +79,7 @@ We need a solution
 
 Each wall in my room has its own shade of gray. But this alone really does not look good. Depth isn't really conveyed well. 
 
-Humans rely really heavily on shading to infer depth, so let's add some shading in here. The further away a point on the wall is from the observer, the darker its shade will be. After a little tinkering, I settled on this function to make things look pretty 
+Humans rely heavily on shading to infer depth, so let's add some shading in here. The further away a point on the wall is from the observer, the darker its shade will be. After a little tinkering, I settled on this function to make things look pretty 
 
 $$
 \text{shade} = \frac{\text{init_shade}}{(0.1 + \text{wall_distance}/2)^{1.2}}
@@ -105,12 +108,12 @@ $$
 Taking $$||v|| = 1$$ and writing $$\vec{x}^* = \vec{x} - \vec{pos.}$$ gives us:
 $$
 c^2 - 2 c \vec{v} \cdot \vec{x}^* + (||\vec{x}^*||^2 -r^2) = 0
-$$
+$$.
 Then we can solve for $c$ with the regular old quadratic formula. 
 
-Once you've found your solution with real and positive $c$, and you're done. To reflect, just negate the component of the ray that's along the sphere's radial direction.
+Once you've found your solution with real and positive $c$, update the ray's position and you're done. To reflect, just negate the component of the ray that's along the sphere's radial direction.
 
-Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
+Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce around one more time.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/example_1.gif" alt="reflection-1-gif" style="width:100%">
@@ -119,7 +122,7 @@ Putting this all together, we just have to place our spheres, and start reflecti
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/example_2.gif" alt="reflection-2-gif" style="width:100%">
-<figcaption><b>More random spheres bouncing light around.</b></figcaption>
+<figcaption><b>Random spheres bouncing light around.</b></figcaption>
 </figure>
 
 There, done. Now what? 
@@ -159,7 +162,7 @@ Cool, now we have a weird shiny raspberry
 
 Already these visualizations raise some interesting questions, like 
 - What is the fractal dimension of this [sphere packing](https://www.worldscientific.com/doi/abs/10.1142/S0218348X94000739)?
-- And why do I want to bite into these spheres so much?
+- Why do I want to bite into these spheres so much?
 
 ## Higher Generations
 
