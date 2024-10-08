@@ -19,7 +19,7 @@ header:
 
 A while ago my friend mentioned how it would be cool to code up a ray tracer. I agreed, it did seem like a cool thing to do, and so I made one. I think the exciting thing about ray tracing is how intuitive it is. You hear about how it works, and immediately you feel like you know how to make one. In fact, it's so intuitive that we kind of invented it before we figured out how vision actually works.
 
-The ancient Greeks' theory (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
+The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/Laffer_curve_drawing.png" alt="laffer-sketch" style="width:100%">
