@@ -50,8 +50,7 @@ The spheres will be perfectly reflective, and the walls will be perfectly absorb
 
 The math behind ray tracing really is easy. If you can break your surface into triangles, then you basically take your rays, find if they intersect with your triangles, and reflect or absorb as desired. 
 
-## The Math
-(_skip if you don't care_)
+## The Math (_skip if you don't care_)
 
 A given ray starts at a position, $\vec{pos}$, and points in a direction $\vec{v}$ (we'll take $||v||=1$). 
 
@@ -63,7 +62,7 @@ $$
 Then to make sure our ray is actually hitting inside the triangle, we just need to check that $a>=0$, $b>=0$, $a+b <= 1$. And finally, we want the ray to be moving forward $c>=0$.
 
 <figure>
-<img src="{{site.baseurl}}/assets/images/post_5/math_drawing.png" alt="vector-drawing" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_5/vectors.png" alt="vector-drawing" style="width:100%">
 </figure>
 
 # Shading the Room, Shining the Balls 
