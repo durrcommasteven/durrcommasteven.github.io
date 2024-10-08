@@ -21,9 +21,9 @@ A while ago my friend mentioned how it would be cool to code up a ray tracer. I 
 
 The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
 
-<figure>
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.jpg" alt="scientific-diagram" style="width:35%">
-<figcaption align = "center"><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
+<figcaption style="text-align: center;"><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
 </figure>
 
 Now it turns out that this is, of course, not how vision works. Thanks to modern science, we all now know that we're in a simulation, and that our optic nerves are mere lines of code in a supercomputer which, when it finally finishes updating, will restart and end our collective existence. 
@@ -59,7 +59,7 @@ $$
 
 Then to make sure our ray is actually hitting _inside_ the triangle, we just need to check that $$a \geq 0$$, $$b \geq 0$$, $a+b \leq 1$. Finally, we want the ray to be moving forward (check that $$c \geq 0$$).
 
-<figure>
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/vectors.png" alt="vector-drawing" style="width:100%">
 </figure>
 
@@ -67,9 +67,9 @@ Then to make sure our ray is actually hitting _inside_ the triangle, we just nee
 
 I don't know what it is about these rooms I was making early on, but they were 100% cursed. Like something about them was off. 
 
-<figure>
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/cursed_room.png" alt="cursed-room" style="width:100%">
-<figcaption align = "center"><b>An example of a cursed room. I think I've had nightmares that took place here.</b></figcaption>
+<figcaption style="text-align: center;"><b>An example of a cursed room. I think I've had nightmares that took place here.</b></figcaption>
 </figure>
 
 We need a solution
@@ -82,18 +82,18 @@ $$
 \text{shade} = \frac{\text{init_shade}}{(0.1 + \text{wall_distance}/2)^{1.2}}
 $$
 
-<figure>
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/no_shading_and_shading.png" alt="shading-comparison" style="width:100%">
-<figcaption align = "center"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're looking at.</b></figcaption>
+<figcaption style="text-align: center;"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're looking at.</b></figcaption>
 </figure>
 
 ## Disco Balls
 
 This brings us to our second problem: Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
 
-<figure align = "center">
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:50%">
-<figcaption align = "center"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
+<figcaption style="text-align: center;"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
 </figure>
 
 Thankfully, reflecting things off a sphere might be even easier than reflecting them off a triangle. Just solve for when (if ever) the ray is a distance $r$ (the radius) from the center of a sphere, $\vec{x}$. 
@@ -112,14 +112,14 @@ Once you've found your solution with real and positive $c$, and you're done. To 
 
 Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
 
-<figure>
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/example_1.gif" alt="reflection-1-gif" style="width:100%">
-<figcaption align = "center"><b>Iterative reflections from spheres embedded in the walls of an un-cursed room.</b></figcaption>
+<figcaption style="text-align: center;"><b>Iterative reflections from spheres embedded in the walls of an un-cursed room.</b></figcaption>
 </figure>
 
-<figure>
+<figure style="text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/example_2.gif" alt="reflection-2-gif" style="width:100%">
-<figcaption align = "center"><b>More random spheres bouncing light around.</b></figcaption>
+<figcaption style="text-align: center;"><b>More random spheres bouncing light around.</b></figcaption>
 </figure>
 
 There, done. Now what? 
