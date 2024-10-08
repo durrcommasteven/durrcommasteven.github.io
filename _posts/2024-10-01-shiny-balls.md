@@ -223,6 +223,8 @@ It turns out there's a close relationship between apollonian gaskets (which our 
     <figcaption><b>The sphere pattern at roughly 7000x zoom. Conveniently, since this is a fractal, you do get the picture at this point. It's all the same, literally.</b></figcaption>
 </figure>
 
+# Fractal Zoom
+
 Now I know what you're thinking: "does this mean that if I get 4 ball-bearings together, go into a white room, make myself invisible, and zoom in between them, I'll see a fractal??"
 
 I think so, but that whole procedure seems really involved. How about we zoom in with this ray tracer thing and see what happens. (I've always wanted to make one of those videos zooming into a fractal)
