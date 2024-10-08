@@ -95,7 +95,7 @@ $$
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/no_shading_and_shading.png" alt="shading-comparison" style="width:100%">
-<figcaption align = "center"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're seeing.</b></figcaption>
+<figcaption align = "center"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're looking at.</b></figcaption>
 </figure>
 
 Thankfully, reflecting things off a sphere might be even easier than reflecting them off a triangle. Just solve for when (if ever) the ray is a distance $r$ (the radius) from the center of a sphere, $\vec{x}$. 
@@ -103,10 +103,13 @@ Thankfully, reflecting things off a sphere might be even easier than reflecting 
 $$ 
 ||(\vec{pos.} + c \cdot \vec{v}) - \vec{x}||^2 = r^2
 $$
+
 We solve this with the regular old quadratic formula, taking $|v| = 1$ and writing $\vec{x}^* = \vec{x} - \vec{p}$ gives us:
+
 $$
 c^2 - 2 c \vec{v} \cdot \vec{x}^* + (||\vec{x}^*||^2 -r^2) = 0
 $$
+
 Find your solution with real and positive $c$, and you're done. To reflect, just negate the component of the ray that's along the sphere's radial direction.
 
 Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
@@ -127,7 +130,7 @@ Well we can ask ChatGPT to make sculptures for us
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="chatgpt-scultpures" style="width:100%">
-<figcaption align = "center"><b>Four sculptures made by o1. <br>(Top left) ChatGPT's embarassing attempt at being deep and making a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT likes spirals (it does look neat).</b></figcaption>
+<figcaption align = "center"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarassing attempt at being deep and making a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT likes spirals (it does look neat).</b></figcaption>
 </figure>
 
 # In Search of Fractals
