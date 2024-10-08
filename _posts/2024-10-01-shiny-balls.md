@@ -8,7 +8,7 @@ tags:
   - Ray tracing
   - Fractals
 
-excerpt: ""
+excerpt: "Let's make a ray tracer"
 header:
   overlay_image: /assets/images/post_5/Banner.png
   overlay_filter: 0 # same as adding an opacity of 0.5 to a black background
