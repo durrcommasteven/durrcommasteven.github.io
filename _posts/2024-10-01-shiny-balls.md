@@ -91,7 +91,7 @@ $$
 
 This brings us to our second problem: Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
 
-<figure>
+<figure align = "center">
 <img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:50%">
 <figcaption align = "center"><b>A disco ball in the corner of a still somewhat cursed room</b></figcaption>
 </figure>
