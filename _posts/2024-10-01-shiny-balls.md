@@ -112,23 +112,23 @@ Once you've found your solution with real and positive $c$, and you're done. To 
 
 Putting this all together, we just have to place our spheres, and start reflecting. With each reflection iteration the remaining unabsorbed light rays bounce one more time.
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/example_1.gif" alt="reflection-1-gif" style="width:100%">
-<figcaption style="text-align: center;"><b>Iterative reflections from spheres embedded in the walls of an un-cursed room.</b></figcaption>
+<figcaption><b>Iterative reflections from spheres embedded in the walls of an un-cursed room.</b></figcaption>
 </figure>
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/example_2.gif" alt="reflection-2-gif" style="width:100%">
-<figcaption style="text-align: center;"><b>More random spheres bouncing light around.</b></figcaption>
+<figcaption><b>More random spheres bouncing light around.</b></figcaption>
 </figure>
 
 There, done. Now what? 
 
 Well, we can ask ChatGPT to make sculptures for us:
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/ai_scuptures.png" alt="chatgpt-scultpures" style="width:100%">
-<figcaption style="text-align: center;"><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarrassing attempt at being all deep and trying to make a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
+<figcaption><b>Four sculptures made by ChatGPT o1. <br>(Top left) ChatGPT's embarrassing attempt at being all deep and trying to make a question mark. <br>(Top right) A double helix which ChatGPT says represents the fact that it, too is made of a sort of genetic code of data. <br>(Bottom left) ChatGPT claimed that these tiny spheres correspond to the corners of a projected tesseract (I did not check this). <br>(Bottom right) A spiral, because ChatGPT seems to like spirals (they do look neat).</b></figcaption>
 </figure>
 
 # In Search of Fractals
@@ -141,18 +141,18 @@ So I coded it up and started making pretty pictures with my ray tracer:
 ## Generation 1 
 At generation 1, we have 4 spheres in a tetrahedron. 
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/app_8.png" alt="apollonian-packing-1" style="width:100%">
-<figcaption style="text-align: center;"><b>Generation 1 of an Apollonian sphere packing (4 shiny balls in a tetrahedron).</b></figcaption>
+<figcaption><b>Generation 1 of an Apollonian sphere packing (4 shiny balls in a tetrahedron).</b></figcaption>
 </figure>
 
 Looks pretty cool. Let's go to generation 2
 
 ## Generation 2
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/high-quality-balls.png" alt="apollonian-packing-2" style="width:100%">
-<figcaption style="text-align: center;"><b>Generation 2 of an Apollonian sphere packing (shiny balls are adding up).</b></figcaption>
+<figcaption><b>Generation 2 of an Apollonian sphere packing (shiny balls are adding up).</b></figcaption>
 </figure>
 
 Cool, now we have a weird shiny raspberry
@@ -165,23 +165,23 @@ Already these visualizations raise some interesting questions, like
 
 While my code allows for GPU use, I'm using my tiny GPU-less laptop, and after generation 2 it starts to complain.
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/num_spheres.png" alt="apollonian-growth" style="width:50%">
-<figcaption style="text-align: center;"><b>A graph explaining my excuse for not making my apollonian fractal cooler.</b></figcaption>
+<figcaption><b>A graph explaining my excuse for not making my apollonian fractal cooler.</b></figcaption>
 </figure>
 
 As you increase the generations of this fractal, the number of spheres increases exponentially. Here are the spheres which make up the 6th generation shown by themselves:
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/last_gen_6.png" alt="apollonian-packing-6-only" style="width:100%">
-<figcaption style="text-align: center;"><b>Even after 1000 reflections, the light rays are getting stuck between spheres <br>(note the dark shadows between nearby spheres).</b></figcaption>
+<figcaption><b>Even after 1000 reflections, the light rays are getting stuck between spheres <br>(note the dark shadows between nearby spheres).</b></figcaption>
 </figure>
 
 This kind of sucks, and although it's certainly possible to plot these sphere packings at high fractal generations, I'm being maximally dumb here -- using essentially no tricks to speed things up. Ray tracing is known for being slow, and for our sphere packing, tons of rays just get stuck bouncing around between the collection of spheres – that's what all the jet black regions between them are. 
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/other_persons_apollonian.png" alt="apollonian-simple" style="width:100%">
-<figcaption style="text-align: center;"><b><a href="https://observablehq.com/@esperanc/3d-apollonian-sphere-packings" target="_blank">This blog post</a> plots Apollonian sphere packing in a much more efficient way (not using ray tracing).</b></figcaption>
+<figcaption><b><a href="https://observablehq.com/@esperanc/3d-apollonian-sphere-packings" target="_blank">This blog post</a> plots Apollonian sphere packing in a much more efficient way (not using ray tracing).</b></figcaption>
 </figure>
 
 Let's try to get a fractal some other way – actually, let's try to _use_ those annoying dark regions where rays are getting stuck. 
@@ -190,23 +190,23 @@ Let's try to get a fractal some other way – actually, let's try to _use_ those
 
 Remember that first generation with the tetrahedron? Well look at the middle – there are three spheres being reflected. Each of those spheres is reflecting its own smaller set of three spheres, etc. This is feeling pretty fractal-y.
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/app_8_emph.png" alt="tetrahedron" style="width:100%">
-<figcaption style="text-align: center;"><b>What's going on in here?</b></figcaption>
+<figcaption><b>What's going on in here?</b></figcaption>
 </figure>
 
 Look between those three spheres. There are some rays that are still bouncing around a few generations, which show up as black. This is clearer if we plot just the rays which haven't hit a wall yet. 
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/serpinski_zoom_1.0_inverted_app.png" alt="inverted_reflections" style="width:100%">
-<figcaption style="text-align: center;"><b>All the rays which are still reflecting after ~ 10 reflections iterations (in black).</b></figcaption>
+<figcaption><b>All the rays which are still reflecting after ~ 10 reflections iterations (in black).</b></figcaption>
 </figure>
 
 This looks quite a bit like a Sierpinski triangle – and it looks that way because it's being constructed the same way. Consider how repeated reflections work here. When a bunch of rays go between our four spheres, each sphere reflects them at the three other spheres. This gives us three dark patches in our image. But each of these dark gaps is reflected at three other spheres too, etc. This leads to an iterative construction that exactly matches that of a Sierpinski triangle.
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/Sierpinski_triangle_evolution.png" alt="sierpinski" style="width:100%">
-<figcaption style="text-align: center;"><b>Sierpinski triangles are constructed using the same rule that determines how reflections work in the tetrahedron of shiny balls.</b></figcaption>
+<figcaption><b>Sierpinski triangles are constructed using the same rule that determines how reflections work in the tetrahedron of shiny balls.</b></figcaption>
 </figure>
 
 It turns out there's a close relationship between apollonian gaskets (which our sphere-packing is a 3d version of) and Siepinski triangles – they share the same combinatorial structure. But who cares about that honestly. Let's just see some pretty pictures 
