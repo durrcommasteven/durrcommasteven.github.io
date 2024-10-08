@@ -134,8 +134,8 @@ But honestly I want to make something way more cool looking than these images â€
 
 So I coded it up and started making pretty pictures with my ray tracer:
 
-## Iteration 1 
-At iteration 1, we have 4 spheres in a tetrahedron. 
+## Generation 1 
+At generation 1, we have 4 spheres in a tetrahedron. 
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/app_8.png" alt="apollonian-packing-1" style="width:100%">
@@ -144,7 +144,7 @@ At iteration 1, we have 4 spheres in a tetrahedron.
 
 Looks pretty cool. Let's go to generation 2
 
-## Iteration 2
+## Generation 2
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_5/high-quality-balls.png" alt="apollonian-packing-2" style="width:100%">
@@ -157,7 +157,7 @@ Already these visualizations raise some interesting questions, like
 - What is the fractal dimension of this [sphere packing](https://www.worldscientific.com/doi/abs/10.1142/S0218348X94000739)?
 - And why do I want to bite into these spheres so much?
 
-## Higher Iterations 
+## Higher Gens
 
 While my code allows for GPU use, I'm using my tiny GPU-less laptop, and after generation 2 it starts to complain.
 
