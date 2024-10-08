@@ -216,7 +216,7 @@ It turns out there's a close relationship between apollonian gaskets (which our 
         <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_7.34145301536491.png" alt="zoom1" style="width: 50%; margin-right: 10px;">
         <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_7.34145301536491.png" alt="inv1" style="width: 50%;">
     </div>
-    <figcaption><b>Prepare your body for entering the sphere (7x zoom).<b>To the left are the full reflection surfaces, and to the right we plot the still-reflecting in black.</b></figcaption>
+    <figcaption><b>Prepare your body for entering the sphere (7x zoom).<br>To the left are the full reflection surfaces, and to the right we plot the still-reflecting in black.</b></figcaption>
 </figure>
 
 <figure style="text-align: center;">
@@ -224,7 +224,7 @@ It turns out there's a close relationship between apollonian gaskets (which our 
         <img src="{{site.baseurl}}/assets/images/post_5/zoom_video_files_6992.9295994298245.png" alt="zoom2" style="width: 50%; margin-right: 10px;">
         <img src="{{site.baseurl}}/assets/images/post_5/inverted_zoom_video_files_6992.9295994298245.png" alt="inv2" style="width: 50%;">
     </div>
-    <figcaption><b>The sphere pattern at roughly 7000x zoom.<b>Conveniently, since this is a fractal, you do get the picture at this point. It's all the same, literally.</b></figcaption>
+    <figcaption><b>The sphere pattern at roughly 7000x zoom.<br>Conveniently, since this is a fractal, you do get the picture at this point. It's all the same, literally.</b></figcaption>
 </figure>
 
 # Fractal Zoom
