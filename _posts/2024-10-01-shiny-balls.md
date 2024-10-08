@@ -59,7 +59,7 @@ $$
 
 Then to make sure our ray is actually hitting _inside_ the triangle, we just need to check that $$a \geq 0$$, $$b \geq 0$$, $a+b \leq 1$. Finally, we want the ray to be moving forward (check that $$c \geq 0$$).
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/vectors.png" alt="vector-drawing" style="width:100%">
 </figure>
 
@@ -67,9 +67,9 @@ Then to make sure our ray is actually hitting _inside_ the triangle, we just nee
 
 I don't know what it is about these rooms I was making early on, but they were 100% cursed. Like something about them was off. 
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/cursed_room.png" alt="cursed-room" style="width:100%">
-<figcaption style="text-align: center;"><b>An example of a cursed room. I think I've had nightmares that took place here.</b></figcaption>
+<figcaption><b>An example of a cursed room. I think I've had nightmares that took place here.</b></figcaption>
 </figure>
 
 We need a solution
@@ -82,9 +82,9 @@ $$
 \text{shade} = \frac{\text{init_shade}}{(0.1 + \text{wall_distance}/2)^{1.2}}
 $$
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/no_shading_and_shading.png" alt="shading-comparison" style="width:100%">
-<figcaption style="text-align: center;"><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're looking at.</b></figcaption>
+<figcaption><b>A weird angle in a cursed room (left) and a room which has been exorcised (right).<br> Not only does shading make things look less haunted, we can also tell what we're looking at.</b></figcaption>
 </figure>
 
 ## Disco Balls
