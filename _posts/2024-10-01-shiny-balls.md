@@ -21,7 +21,7 @@ A while ago my friend mentioned how it would be cool to code up a ray tracer. I 
 
 The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
 
-<figure style="text-align: center;">
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/emission_theory_picture.jpg" alt="scientific-diagram" style="width:35%">
 <figcaption><b>A scientific diagram presumably explaining how a emission theory helps us see dragons.<br>(Dragon helpfully placed between A and B)</b></figcaption>
 </figure>
