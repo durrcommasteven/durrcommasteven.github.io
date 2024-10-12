@@ -14,10 +14,9 @@ header:
   overlay_filter: 0 # same as adding an opacity of 0.5 to a black background
 
 ---
-<figure>
+
 {% include video id="s5R1V4rIczk" provider="youtube" %}
 <figcaption align="center">Zooming in on some shiny balls</figcaption>
-</figure>
 
 A while ago my friend mentioned how it would be cool to code up a ray tracer. I agreed, it did seem like a cool thing to do, and so I made one. I think the exciting thing about ray tracing is how intuitive it is. You hear about how it works, and immediately you feel like you know how to make one. In fact, it's so intuitive that we kind of invented it before we figured out how vision actually works.
 
