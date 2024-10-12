@@ -166,7 +166,7 @@ $$
 
 The problem now is that how much each person works is a function of how much UBI income they get, but the UBI income they get is a function of how much each person works. So we need to find the self-consistent solution here. We'll assume some log-normal parameters $\mu$ and $\sigma$ for the distribution of $s$ in the population, and try to find it. 
 
-For this to be self-consistent, we need the expectation to actually take on the value that it should have:
+For this to be self-consistent, we need the expectation to actually match the value it should have:
 
 $$
 \langle s x^*(s) \rangle = \langle \max\big(0, \frac{s\beta}{\gamma} - \frac{t \langle s x \rangle}{1-t}\big)\rangle = \int_0^{\infty} ds \ \max\big(0, \frac{s\beta}{\gamma} - \frac{ t \langle s x \rangle}{1-t}\big) p_{\mu, \sigma}(s)

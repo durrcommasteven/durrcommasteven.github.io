@@ -16,13 +16,18 @@ header:
   overlay_filter: 0.2 # same as adding an opacity of 0.5 to a black background
 ---
 
+<figure>
+<img src="{{site.baseurl}}/assets/images/post_2/median_game_webp.webp" alt="median_game" style="width:100%">
+<figcaption align="center">A neural network playing battleship</figcaption>
+</figure>
+
 [see the code here](https://github.com/durrcommasteven/Battleship){: .btn .btn--warning}
 
 A while ago my friend Chad suggested that we make algorithms to play battleship on sets of random boards and see whose was better. This was all inspired by a [blogpost](https://datagenetics.com/blog/december32011/index.html) Chad had read from datagenetics, where Nick Berry applied battleship algorithms to random boards and saw which ones worked better than others.
 
-I only had a few free hours, so I decided that I wanted to make an algorithm that was as good as possible, under the strict constraint that it was also as simple and dumb as possible. I wanted to avoid complicated math, difficult combinatorics, and any algorithm that would require walking down some huge decision tree I would have to manually populate.
+I only had a few free hours, so I decided that I wanted to make an algorithm that was as good as possible, under the strict constraint that it was also as dumb as possible. I wanted to avoid complicated math, difficult combinatorics, and any algorithm that would require walking down some huge decision tree I would have to manually populate.
 
-As basic as the underlying idea was, the project raised a number of interesting ideas, and put the pros and cons of neural networks (NN's) in sharp relief.
+As basic as the underlying idea was, the project raised a number of interesting ideas, and put the pros and cons of neural networks (NNs) in sharp relief.
 
 As the datagenetics blogpost concludes, a really good battleship algorithm would be one which takes in the current state of the board -- the squares where it sees a ship, the squares where it sees ocean, and the squares it has not attacked yet -- and uses it to determine the probability that each unattacked square has a ship on it. It then goes through those unattacked squares, and chooses the most probable one to be its next target.
 
@@ -44,7 +49,7 @@ Here is the idea: Train a neural network on partially explored battleship boards
 
 Here the data comes in the form of images of the board's state, with each 'pixel' being either hit, miss, or unknown. These images contain features that are to a degree translationally invariant -- the same arrangement of ships can be shifted around the board. There are also certain small-scale features of the images that can tell us about the underlying arrangement of ships. The feature of a 'hit' with unexplored squares all around tells us that a ship is either to left of it, right of it, above it, or below it.
 
-This type of input data is perfect for particular type of NN known as convolutional. These NN's apply convolutions to an image using many different kernels. The kernels evolve during training and, once optimized, tend to pick out important features of the input image.
+This type of input data is perfect for particular type of NN known as convolutional. These NNs apply convolutions to an image using many different kernels. The kernels evolve during training and, once optimized, tend to pick out important features of the input image.
 
 To keep things simple, I used the neural network architecture shown below (right now I'm taking outputs to be logits):
 
@@ -68,7 +73,7 @@ NN(board) = \frac{1}{8} \sum_{\hat{O} \in D_4} \tilde{NN}(\hat{O} board)
 $$
 
 Where I've used $\tilde{NN}$ to refer to a single unsymmetrized evaluation of the network. 
-Above, I'm averaging logits -- to get a probability apply sigmoid to the averaged logits. Intuitively, applying a sigmoid after averaging should allow the symmetries to improve learning. 
+Above, I'm averaging logits -- to get a probability apply a sigmoid to the averaged logits. Intuitively, applying a sigmoid after averaging should allow the symmetries to improve learning. 
 
 Next we need to train the NN. We want the input data to be the types of board states the NN will likely see during gameplay -- partially revealed boards with hits and misses according to the history of the game. The labels for this data would then be the true states of the boards. During training, we teach the NN to use the board states with the correct underlying board.
 
@@ -102,7 +107,7 @@ We say 'First' because in principle I can do this as many times as I want. Repla
 
 The idea is that if our initial guess of a plane wave is sufficiently close to the right answer, repeated application of this algorithm will make $\psi_{n}$ converge correctly to $\psi$.
 
-Lets get back to the problem of getting data to train the NN model. If we wrote it in the form of an equation, we would have something like:
+Let's get back to the problem of getting data to train the NN model. If we wrote it in the form of an equation, we would have something like:
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/trained.png" alt="full_nn_born_approx" style="width:100%">
@@ -126,7 +131,7 @@ Great! Now I have a neural network that has been trained to take as an input som
 
 # Are Outputs Probabilities?
 
-This brings up a subtle question. How do I know I can interpret these numbers as probabilities?  At this point all I know is that if my neural network is perfect, then the more likely a square is to be occupied, the closer the NN's output for that square is to 1. But does this mean the outputs are necessarily probabilities? Not at all.
+This brings up a subtle question. How do I know I can interpret these numbers as probabilities?  At this point all I know is that if my neural network is perfect, then the more likely a square is to be occupied, the closer the NNs output for that square is to 1. But does this mean the outputs are necessarily probabilities? Not at all.
 
 Really, all I can know is that my NN produces some monotonically increasing function of the probability.
 
@@ -182,19 +187,19 @@ There are two responses to this concern:
 
 First, just for fun, lets see how a typical board is played.
 
-To the left we have the actual gameplay, with purple representing an unknown square, white a miss, and black a hit.  To the upper right, we have the NN's internal probability distribution (darker = more likely to be a ship), and to the lower right we have the actual board.
+To the left we have the actual gameplay, with purple representing an unknown square, white a miss, and black a hit.  To the upper right, we have the NNs internal probability distribution (darker = more likely to be a ship), and to the lower right we have the actual board.
 
 There's a lot of remarkable stuff going on in this game, and much of it is surprisingly intuitive. When we watch the algorithm play, it seems almost human in how it appears to be gaining an internal understanding of the board.
 
 We see that when the NN gets a hit or a miss, the probability distribution suddenly gets a vertical and horizontal streak centered at that point.
 
-To the left we have the actual gameplay, with purple representing an unknown square, white a miss, and black a hit.  To the upper right, we have the NN's internal probability distribution (darker = more likely to be a ship), and to the lower right we have the actual board.
+To the left we have the actual gameplay, with purple representing an unknown square, white a miss, and black a hit.  To the upper right, we have the NNs internal probability distribution (darker = more likely to be a ship), and to the lower right we have the actual board.
 
 There's a lot of remarkable stuff going on in this game, and much of it is surprisingly intuitive. When we watch the algorithm play, it seems almost human in how it appears to be gaining an internal understanding of the board.
 
 We see that when the NN gets a hit or a miss, the probability distribution suddenly gets a vertical and horizontal streak centered at that point.
 
-If its a hit, then the NN tends to follow these dark probability streaks until it understands that either it's searching in the wrong direction, or its found all of the ship.
+If it's a hit, then the NN tends to follow these dark probability streaks until it understands that either it's searching in the wrong direction, or its found all of the ship.
 
 The NN also understands the directionality of the ships it sees. It always seems to make sure that both ends of a line of hits are unoccupied before moving on, but it doesn't really care about the immediate 'left' and 'right' of these hits, as we see when the NN attacks the vertical ship in the above game. Clearly it understands the general shapes of the ships on the board.
 
@@ -222,6 +227,7 @@ Another interesting analysis shows that my algorithm even 'knows' how many ships
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/implied_remaining_tiles.png" alt="implied_remaining_tiles" style="width:100%">
+<figcaption align="center">A violin plot (I know some people hate these -- I like them) of the implied number of battleship tiles still left to be hit, as a function of the _actual_ number of battleship tiles remaining</figcaption>
 </figure>
 
 We can also easily see that there are some serious problems with this algorithm. For instance, if we look at the game length distribution, we see that there was at least one game which took around 98 moves.
@@ -236,7 +242,7 @@ To find out what's going on here, we can look at an especially long game and see
 
 This game took literally 100 moves -- way longer than any human would ever take, and longer than random guessing (on average). The cause of this failure is the long piece placed horizontally at the bottom of the board, which has a little 2-square boat rotated vertically at its right end. This utterly baffles the neural network, and it ends up predicting that it's more likely that a ship is on a single isolated square (which is impossible) than it is for a tile to be occupied above the long stretch of hits. Obviously the single set of convolutional filters alone aren't a replacement for reasoning.
 
-Lets see how the algorithm plays during one of its faster games, this one taking just 19 moves.
+Let's see how the algorithm plays during one of its faster games, this one taking just 19 moves.
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/short_game_webp.webp" alt="short_game" style="width:100%">
@@ -244,7 +250,7 @@ Lets see how the algorithm plays during one of its faster games, this one taking
 
 Clearly things are easier in a game of battleship when ships are touching each other and in the center of the board.
 
-FInally, heres a 'median game' taking around 52 moves
+Finally, heres a 'median game' taking around 52 moves
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/median_game_webp.webp" alt="median_game" style="width:100%">
 </figure>
@@ -281,7 +287,4 @@ _________________
 
 
 
-**A note**: I originally wrote this back in 2018. Back then I used tensorflow 1 with sessions and all that. Don't panic though, it has been redone in tensorflow 2.
-
-
-
+**A note**: I originally wrote this back in 2018. Back then I was using tensorflow (1) -- with sessions and all that. I rewrote it though when I went through this post, and to preserve historicity, I used tensorflow 2.
