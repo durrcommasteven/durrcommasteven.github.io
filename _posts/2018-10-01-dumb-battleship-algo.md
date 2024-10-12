@@ -18,8 +18,8 @@ header:
 
 <figure>
 <img src="{{site.baseurl}}/assets/images/post_2/median_game_webp.webp" alt="median_game" style="width:100%">
-<figcaption align="center">A neural network playing battleship</figcaption>
 </figure>
+<figcaption align="center">A neural network playing battleship</figcaption>
 
 [see the code here](https://github.com/durrcommasteven/Battleship){: .btn .btn--warning}
 
