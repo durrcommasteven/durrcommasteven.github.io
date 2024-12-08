@@ -9,7 +9,7 @@ tags:
 excerpt: "A quantitative model of motorcycle coolness"
 header:
   overlay_image: /assets/images/post_6/cool_pic.png
-  overlay_filter: 1 # same as adding an opacity of 0.5 to a black background
+  overlay_filter: 0 # same as adding an opacity of 0.5 to a black background
 ---
 
 <figure>
@@ -22,21 +22,21 @@ For example, both of these riders look cool:
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_6/two_cool_riders.png" alt="two-cool-riders" style="width:40%">
-<figcaption><b>Two self-evidently cool-looking motorcycle riders.</figcaption>
+<figcaption><b>Two self-evidently cool-looking motorcycle riders.</b></figcaption>
 </figure>
 
 This rider, however, definitely does not look cool.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_6/moped.jpeg" alt="uncool-rider" style="width:40%">
-<figcaption><b>A very clearly uncool-looking motorcycle rider.</figcaption>
+<figcaption><b>A very clearly uncool-looking motorcycle rider.</b></figcaption>
 </figure>
 
 To explain this phenomenon, I have formulated a theory: coolness on a motorcycle is a function of seating angle of the back with respect to the vertical, as shown below:
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_6/cool_plot.png" alt="coolness-plot" style="width:40%">
-<figcaption><b>Seating angle vs coolness on a motorcycle. Leaning backward is considered negative, and leaning forward is considered positive.</figcaption>
+<img src="{{site.baseurl}}/assets/images/post_6/cool_plot.png" alt="coolness-plot" style="width:80%">
+<figcaption><b>Seating angle vs coolness on a motorcycle. Leaning backward is considered negative, and leaning forward is considered positive.</b></figcaption>
 </figure>
 
 For example, let's take a look at the seating angle of the two cool riders. (Leaning backward is considered a negative angle, and leaning forward is considered positive.)
@@ -59,8 +59,8 @@ But on the *moped* the rider has an angle of $0$. This represents the minimum of
 This makes sense, and clearly we've proven this theory is true beyond a doubt — but it also raises some questions (helpfully indicated by the question marks below).
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_6/cool_plot_with_questions.png" alt="coolness-plot-question" style="width:40%">
-<figcaption><b>Seating angle vs. coolness on a motorcycle -- pushing the limits of our laws of coolness.</figcaption>
+<img src="{{site.baseurl}}/assets/images/post_6/cool_plot_with_questions.png" alt="coolness-plot-question" style="width:80%">
+<figcaption><b>Seating angle vs. coolness on a motorcycle -- pushing the limits of our laws of coolness.</b></figcaption>
 </figure>
 
 ## Exotic Motorcycle Riding Configurations
@@ -75,12 +75,12 @@ The orientation that the biker eventually chooses depends on which side of the f
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_two_options.jpg" alt="pi-over-two" style="width:40%">
-<figcaption><b>Which is the natural way to ride a bike when the back has an angle $\theta = \pi/2$ to vertical? (Facing directly into the seat)</figcaption>
+<figcaption><b>Which is the natural way to ride a bike when the back has an angle $\theta = \pi/2$ to vertical? (Facing directly into the seat)</b></figcaption>
 </figure>
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_6/neg_pi_over_2_two_options.jpg" alt="neg-pi-over-two" style="width:40%">
-<figcaption><b>Which is more natural? ($\theta = -\pi/2$)</figcaption>
+<figcaption><b>Which is more natural? ($\theta = -\pi/2$)</b></figcaption>
 </figure>
 
 Now we need to try to evaluate the coolness of these configurations. On the one hand, they are extraordinarily dangerous — it is impossible to see what's in front of you when your face is oriented directly into the seat ($\theta=\pi/2$). Dangerous things are inherently cool, so this works in their favor. On the other hand, these positions also look incredibly stupid, which can be uncool. 
