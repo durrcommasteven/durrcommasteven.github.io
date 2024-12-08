@@ -9,7 +9,7 @@ tags:
 excerpt: "A quantitative model of motorcycle coolness"
 header:
   overlay_image: /assets/images/post_6/cool_pic.png
-  overlay_filter: 0 # same as adding an opacity of 0.5 to a black background
+  overlay_filter: 0.25 # same as adding an opacity of 0.5 to a black background
 ---
 
 <figure>
@@ -39,7 +39,15 @@ To explain this phenomenon, I have formulated a theory: coolness on a motorcycle
 <figcaption><b>Seating angle vs coolness on a motorcycle. Leaning backward is considered negative, and leaning forward is considered positive.</b></figcaption>
 </figure>
 
-For example, let's take a look at the seating angle of the two cool riders. (Leaning backward is considered a negative angle, and leaning forward is considered positive.)
+Around $\theta=0$ this obeys the equation
+
+$$
+\text{Coolness}(\theta) = C_{mop.} + (1-e^{-\left(\frac{\theta}{\pi/10}\right)^2})(C_{sup.} - C_{mop.})
+$$
+
+Where above, $C_{mop.}$ is the coolness of a moped (coolness minimum), and $C_{sup.}$ is roughly the coolness of the superbike (coolness supremum). 
+
+To be specific, let's take a look at the seating angle of the two cool riders. (Leaning backward is considered a negative angle, and leaning forward is considered positive.)
 
 On the *superbike*, the rider has an angle of roughly $\pi/3$.
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
