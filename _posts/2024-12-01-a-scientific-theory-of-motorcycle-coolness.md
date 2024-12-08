@@ -1,0 +1,90 @@
+---
+title: "When Does Riding a Motorcycle Look Cool?"
+last_modified_at: 2024-12-01T16:20:02-05:00
+categories:
+  - Blog
+tags:
+  - Thoughts
+
+excerpt: "A quantitative model of motorcycle coolness"
+header:
+  overlay_image: /assets/images/post_6/cool_pic.png
+  overlay_filter: 1 # same as adding an opacity of 0.5 to a black background
+---
+
+<figure>
+<img src="{{site.baseurl}}/assets/images/post_6/moped_vid_1.webp" alt="moped_vid" style="width:100%">
+</figure>
+
+Something I noticed a while back was that, although in general, people on motorized two-wheeled vehicles (hereafter referred to as MOTORCYCLES) look cool, there are cases when they do not.
+
+For example, both of these riders look cool: 
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/two_cool_riders.png" alt="two-cool-riders" style="width:40%">
+<figcaption><b>Two self-evidently cool-looking motorcycle riders.</figcaption>
+</figure>
+
+This rider, however, definitely does not look cool.
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/moped.jpeg" alt="uncool-rider" style="width:40%">
+<figcaption><b>A very clearly uncool-looking motorcycle rider.</figcaption>
+</figure>
+
+To explain this phenomenon, I have formulated a theory: coolness on a motorcycle is a function of seating angle of the back with respect to the vertical, as shown below:
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/cool_plot.png" alt="coolness-plot" style="width:40%">
+<figcaption><b>Seating angle vs coolness on a motorcycle. Leaning backward is considered negative, and leaning forward is considered positive.</figcaption>
+</figure>
+
+For example, let's take a look at the seating angle of the two cool riders. (Leaning backward is considered a negative angle, and leaning forward is considered positive.)
+
+On the *superbike*, the rider has an angle of roughly $\pi/3$.
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/superbike_with_angle.png" alt="superbike" style="width:40%">
+</figure>
+
+On the *harley*, the rider has an angle of around $-\pi/6$.
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/harley_with_angle.png" alt="harley" style="width:40%">
+</figure>
+
+But on the *moped* the rider has an angle of $0$. This represents the minimum of the coolness vs angle curve. 
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/moped_with_angle.png" alt="moped" style="width:40%">
+</figure>
+
+This makes sense, and clearly we've proven this theory is true beyond a doubt — but it also raises some questions (helpfully indicated by the question marks below).
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/cool_plot_with_questions.png" alt="coolness-plot-question" style="width:40%">
+<figcaption><b>Seating angle vs. coolness on a motorcycle -- pushing the limits of our laws of coolness.</figcaption>
+</figure>
+
+## Exotic Motorcycle Riding Configurations
+
+What does my seat-angle theory of motorcycle coolness say about these regimes?
+
+How do we even begin to investigate the coolness of $\theta=\pm \pi/2$. 
+First, we need to ask, how does one ride a motorcycle when sitting at $\theta=\pm\pi/2$?
+
+At these extreme points in seating-angle-space, the orientation of one's legs might have two distinct positions which are equally good options to the rider -- on the footpegs, or off the bike entirely. 
+The orientation that the biker eventually chooses depends on which side of the foot-placement-phase they end up on. 
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_two_options.jpg" alt="pi-over-two" style="width:40%">
+<figcaption><b>Which is the natural way to ride a bike when the back has an angle $\theta = \pi/2$ to vertical? (Facing directly into the seat)</figcaption>
+</figure>
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/neg_pi_over_2_two_options.jpg" alt="neg-pi-over-two" style="width:40%">
+<figcaption><b>Which is more natural? ($\theta = -\pi/2$)</figcaption>
+</figure>
+
+Now we need to try to evaluate the coolness of these configurations. On the one hand, they are extraordinarily dangerous — it is impossible to see what's in front of you when your face is oriented directly into the seat ($\theta=\pi/2$). Dangerous things are inherently cool, so this works in their favor. On the other hand, these positions also look incredibly stupid, which can be uncool. 
+
+These positions represent exotic configurations in motorcycle riding space, and they might only exist in certain extreme environments: like empty bolivian salt flats, or within the interiors of neutron stars. In these regimes, we might observe a breakdown of our parochial understanding of what motorcycling _is_ -- let alone how cool a given position is. 
+
+Probing these kinds of profound mysteries are exactly what science is about -- so please [take this poll](https://forms.gle/7C9GrTeW9SPvEPWz8) to help contribute to humanity's collective understanding of the coolness of motorcycle-riding positions. 
