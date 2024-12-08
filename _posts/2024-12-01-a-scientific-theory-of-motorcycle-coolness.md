@@ -82,16 +82,16 @@ At these extreme points in seating-angle-space, the orientation of one's legs mi
 The orientation that the biker eventually chooses depends on which side of the foot-placement-phase they end up on. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_two_options.jpg" alt="pi-over-two" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_two_options.png" alt="pi-over-two" style="width:80%">
 <figcaption><b>Which is the natural way to ride a bike when the back has an angle $\theta = \pi/2$ to vertical? (Facing directly into the seat)</b></figcaption>
 </figure>
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_6/neg_pi_over_2_two_options.jpg" alt="neg-pi-over-two" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_6/neg_pi_over_2_two_options.png" alt="neg-pi-over-two" style="width:80%">
 <figcaption><b>Which is more natural? ($\theta = -\pi/2$)</b></figcaption>
 </figure>
 
-Now we need to try to evaluate the coolness of these configurations. On the one hand, they are extraordinarily dangerous — it is impossible to see what's in front of you when your face is oriented directly into the seat ($\theta=\pi/2$). Dangerous things are inherently cool, so this works in their favor. On the other hand, these positions also look incredibly stupid, which can be uncool. 
+Now we need to try to evaluate the coolness of these configurations. On the one hand, all are extraordinarily dangerous — it is impossible to see what's in front of you when your face is oriented directly into the seat ($\theta=\pi/2$). Dangerous things are inherently cool, so this works in their favor. On the other hand, these positions also look incredibly stupid, which can be uncool. 
 
 These positions represent exotic configurations in motorcycle riding space, and they might only exist in certain extreme environments: like empty bolivian salt flats, or within the interiors of neutron stars. In these regimes, we might observe a breakdown of our parochial understanding of what motorcycling _is_ -- let alone how cool a given position is. 
 
