@@ -18,7 +18,7 @@ header:
 {% include video id="s5R1V4rIczk" provider="youtube" %}
 <figcaption align="center">Zooming in on some shiny balls</figcaption>
 
-A while ago my friend mentioned how it would be cool to code up a ray tracer. I agreed, it did seem like a cool thing to do, and so I made one. I think the exciting thing about ray tracing is how intuitive it is. You hear about how it works, and immediately you feel like you know how to make one. In fact, it's so intuitive that we kind of invented it before we figured out how vision actually works.
+A while ago my friend mentioned how it would be cool to code up a ray tracer. I agreed—it did seem like a cool thing to do—and so I made one. I think the exciting thing about ray tracing is how intuitive it is. You hear about how it works, and immediately you feel like you know how to make one. In fact, it's so intuitive that we kind of invented it before we figured out how vision actually works.
 
 The ancient Greeks' idea (emission theory) was that 'eye-beams' leave their respective eyeballs and bounce around, eventually hitting something with some color and brightness that they (somehow) then would convey back to the eye. 
 
@@ -43,7 +43,7 @@ I want to construct the most basic nontrivial ray-tracing environment possible. 
 
 To be specific, our room is a 1×1×1 cube, with opposite corners on (0,0,0) and (1,1,1).
 
-I also made the bold (easier) choice of having everything be greyscale. 
+I also made the bold (easier) choice of having everything be grayscale. 
 
 The spheres will be perfectly reflective, and the walls will be perfectly absorbing. 
 
@@ -81,7 +81,7 @@ We need a solution
 
 Each wall in my room has its own shade of gray. But this alone really does not look good. Depth isn't really conveyed well. 
 
-Humans rely heavily on shading to infer depth, so let's add some shading in here. The further away a point on the wall is from the observer, the darker its shade will be. After a little tinkering, I settled on this function to make things look pretty 
+Humans rely heavily on shading to infer depth so let's add some shading in here. The further away a point on the wall is from the observer, the darker its shade will be. After a little tinkering I settled on this function to make things look pretty 
 
 $$
 \text{shade} = \frac{\text{init_shade}}{(0.1 + \text{wall_distance}/2)^{1.2}}
@@ -94,7 +94,7 @@ $$
 
 ## Disco Balls
 
-This brings us to our second problem: Unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
+This brings us to our second problem: unfortunately, it turns out that when you try to triangulate a perfectly reflective sphere, you end up with a disco ball. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_5/disco_ball.jpeg" alt="disco" style="width:50%">
