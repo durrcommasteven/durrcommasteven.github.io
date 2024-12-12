@@ -56,7 +56,7 @@ p(x) = \alpha (x+\beta)^{-\gamma}
 $$
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_7/power_laws_sample.png" alt="power-laws" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/power_laws_sample.png" alt="power-laws" style="width:60%">
 <figcaption><b>Some classic power laws. Who could forget $\gamma=2$</b></figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ $$
 This function grows with $\gamma$ (see plot below) 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_7/break_even.png" alt="break-even" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/break_even.png" alt="break-even" style="width:60%">
 <figcaption><b>As $\gamma$ grows, more people break even.</b></figcaption>
 </figure>
 
@@ -185,7 +185,7 @@ $$
 $$
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_7/colored_break_even.png" alt="power-laws" style="width:80%">
+<img src="{{site.baseurl}}/assets/images/post_7/colored_break_even.png" alt="power-laws" style="width:100%">
 <figcaption><b>You're bound to feel screwed.</b></figcaption>
 </figure>
 
@@ -217,7 +217,7 @@ What about multiple years of costs? Well the actual distribution that this produ
 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_7/power_law_convs.png" alt="convs" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/power_law_convs.png" alt="convs" style="width:60%">
 <figcaption><b>Healthcare costs will always be skewed to the left, and you will never be happy. ($\gamma=2.5$)</b></figcaption>
 </figure>
 
