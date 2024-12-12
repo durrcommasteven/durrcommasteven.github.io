@@ -210,7 +210,7 @@ Why is this? Well, one year's health costs were a power law, totally left-skewed
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_7/skew.png" alt="skew" style="width:40%">
-<figcaption><b>Image from [Wikipedia](https://en.wikipedia.org/wiki/Skewness)</b></figcaption>
+<figcaption><b>Image from <a href="https://en.wikipedia.org/wiki/Skewness">Wikipedia</a></b></figcaption>
 </figure>
 
 What about multiple years of costs? Well the actual distribution that this produces is pretty complex (you have to convolve together N power laws). If you're willing to wait for infinity, ($N \rightarrow \infty$) the sum of power laws converges to a gaussian, with zero skew and mean $N \times \text{Average Yearly Healthcare Price}$. But for any number of years less than infinity, the sum of costs is _always_ positively skewed, meaning the mean value is _always_ greater than the median, and most people _always_ end up paying more for healthcare than they get back. 
