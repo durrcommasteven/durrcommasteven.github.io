@@ -23,7 +23,7 @@ With the assassination of the CEO of UnitedHealth, a lot of people are expressin
 
 I want to really quickly sketch out why this is actually completely consistent with insurance operating correctly. 
 
-# Benevolent Health Insurance Incorporated (BenHeath)
+# Benevolent Health Insurance Incorporated (BenHealth)
 
 To show that the "insurance is a scam" feeling is kind of inevitable, let's first invent a perfect health insurance company, which I'm titling "Benevolent Health Insurance Incorporated", or "BenHealth" after its corporate rebrand.
 
@@ -104,7 +104,7 @@ $$
 N \frac{\gamma-1}{\beta^{1-\gamma}} \left( \frac{\beta (x^* + \beta)^{1-\gamma}}{1-\gamma} - \frac{(x^* +\beta)^{2-\gamma}}{2-\gamma}\right) 
 $$
 
-We know what $x^*$ is in terms of $f$ – the fraction of top individuals, so we can plug in to obtain the expected total cost of healthcare customers in the top $f$ fraction of cost – which im calling $\text{TopCost}(f)$:
+We know what $x^*$ is in terms of $f$ – the fraction of top individuals, so we can plug in to obtain the expected total cost of healthcare customers in the top $f$ fraction of cost – which im calling $\text{CostTop}(f)$:
 
 $$
 \text{CostTop}(f) =N f \beta \left(\frac{\gamma-1}{\gamma-2} f^{\frac{1}{1-\gamma}} -1\right)
