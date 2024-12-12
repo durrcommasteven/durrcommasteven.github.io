@@ -56,7 +56,7 @@ p(x) = \alpha (x+\beta)^{-\gamma}
 $$
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_t/power_laws_sample.png" alt="power-laws" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/power_laws_sample.png" alt="power-laws" style="width:40%">
 <figcaption><b>Some classic power laws. Who could forget $\gamma=2$</b></figcaption>
 </figure>
 
@@ -101,7 +101,7 @@ $$
 This becomes 
 
 $$
-N \left( \frac{x^* + \beta}{\beta} \right)^{1-\gamma} \right)^{1-\gamma} \frac{(\gamma-1) x^* +\beta}{\gamma-2}
+N \frac{\gamma-1}{\beta^{1-\gamma}} \left( \frac{\beta (x^* + \beta)^{1-\gamma}}{1-\gamma} - \frac{(x^* +\beta)^{2-\gamma}}{2-\gamma}\right) 
 $$
 
 We know what $x^*$ is in terms of $f$ – the fraction of top individuals, so we can plug in to obtain the expected total cost of healthcare customers in the top $f$ fraction of cost – which im calling $\text{TopCost}(f)$:
@@ -168,7 +168,7 @@ $$
 This function grows with $\gamma$ (see plot below) 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_t/break_even.png" alt="break-even" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/break_even.png" alt="break-even" style="width:40%">
 <figcaption><b>As $\gamma$ grows, more people break even.</b></figcaption>
 </figure>
 
@@ -185,7 +185,7 @@ $$
 $$
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_t/colored_break_even.png" alt="power-laws" style="width:80%">
+<img src="{{site.baseurl}}/assets/images/post_7/colored_break_even.png" alt="power-laws" style="width:80%">
 <figcaption><b>You're bound to feel screwed.</b></figcaption>
 </figure>
 
@@ -209,7 +209,7 @@ Well, again, _you probably will not_.
 Why is this? Well, one year's health costs were a power law, totally left-skewed. The skew-ness of a distribution tells us that the mean value **is always greater than the median**.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_t/skew.png" alt="skew" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/skew.png" alt="skew" style="width:40%">
 <figcaption><b>Image from [Wikipedia](https://en.wikipedia.org/wiki/Skewness)</b></figcaption>
 </figure>
 
@@ -217,7 +217,7 @@ What about multiple years of costs? Well the actual distribution that this produ
 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_t/power_law_convs.png" alt="convs" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_7/power_law_convs.png" alt="convs" style="width:40%">
 <figcaption><b>Healthcare costs will always be skewed to the left, and you will never be happy. ($\gamma=2.5$)</b></figcaption>
 </figure>
 
