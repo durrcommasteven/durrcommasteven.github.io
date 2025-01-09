@@ -97,9 +97,11 @@ These positions represent exotic configurations in motorcycle riding space, and 
 
 Probing these kinds of profound mysteries are exactly what science is about -- so please [take this poll](https://forms.gle/7C9GrTeW9SPvEPWz8) to help contribute to humanity's collective understanding of the coolness of motorcycle-riding positions. 
 
-# **UPDATE**
+<div style="background-color: #ff5733; color: white; text-align: center; padding: 20px; border-radius: 10px; border: 5px solid #ff0000; font-size: 2rem; font-weight: bold; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);">
+  🚨 <span style="text-decoration: underline; font-size: 2.5rem;">UPDATE</span> 🚨
+</div>
 
-Big news everyone -- I was recently informed by my estonian architect friend that one of these exotic phases of motorcycle usage [has already been employed](https://en.wikipedia.org/wiki/Rollie_Free) in the real world. 
+**Big news** everyone -- I was recently informed by my estonian architect friend that one of these exotic phases of motorcycle usage [has already been employed](https://en.wikipedia.org/wiki/Rollie_Free) in the real world. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_6/exotic_biking.png" alt="exotic-biking" style="width:80%">
