@@ -96,3 +96,34 @@ Now we need to try to evaluate the coolness of these configurations. On the one 
 These positions represent exotic configurations in motorcycle riding space, and they might only exist in certain extreme environments: like empty bolivian salt flats, or within the interiors of neutron stars. In these regimes, we might observe a breakdown of our parochial understanding of what motorcycling _is_ -- let alone how cool a given position is. 
 
 Probing these kinds of profound mysteries are exactly what science is about -- so please [take this poll](https://forms.gle/7C9GrTeW9SPvEPWz8) to help contribute to humanity's collective understanding of the coolness of motorcycle-riding positions. 
+
+# **UPDATE**
+
+Big news everyone -- I was recently informed by my estonian architect friend that one of these exotic phases of motorcycle usage [has already been employed](https://en.wikipedia.org/wiki/Rollie_Free) in the real world. 
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/exotic_biking.png" alt="exotic-biking" style="width:80%">
+<figcaption><b>Rollie Free, what a legend.</b></figcaption>
+</figure>
+
+He was aptly named "Rollie Free" -- and roll free he did, in a speed-o no less. This is science in action. I (a scientist) make a prediction and, like Einstein's prediction of gravitational lensing being observed during a full solar eclipse, my prediction of the existence of an exotic state of motorcycling is confirmed by examining nature (wikipedia). Rollie even did this this on salt flats (Bonneville Salt Flats) -- just as I predicted.
+
+<figure style="display: flex; flex-direction: row; justify-content: center; align-items: center; text-align: center; gap: 20px;">
+  <div style="text-align: center;">
+    <img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_2.png" alt="exotic-biking-theory" style="width:45%;">
+    <figcaption><b>Theoretical prediction.</b></figcaption>
+  </div>
+  <div style="text-align: center;">
+    <img src="{{site.baseurl}}/assets/images/post_6/exotic_biking.png" alt="exotic-biking-reality" style="width:45%;">
+    <figcaption><b>Experimental evidence.</b></figcaption>
+  </div>
+</figure>
+
+Rollie's near-nudity reinforces his insane coolness more than theoretical predictions ever could. We now know for sure how one rides a motorcycle when they drive at an angle of $\pi/2$ to vertical, and how profoundly cool they look. 
+
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+<img src="{{site.baseurl}}/assets/images/post_6/Rollie_free_1920.png" alt="exotic-biking" style="width:40%">
+<figcaption><b>This time Rollie decided against his traditional underwear-only approach to motorcycling. Perhaps this was after a severe chafing incident.</b></figcaption>
+</figure>
+
+I'll be sure to keep this blog updated _the second_ I learn of further real-world examples of exotic phases of motorcycle riding, and their corresponding coolnesses. 
