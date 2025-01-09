@@ -100,6 +100,7 @@ Probing these kinds of profound mysteries are exactly what science is about -- s
 <div style="background-color: #ff5733; color: white; text-align: center; padding: 20px; border-radius: 10px; border: 5px solid #ff0000; font-size: 2rem; font-weight: bold; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);">
   🚨 <span style="text-decoration: underline; font-size: 2.5rem;">UPDATE</span> 🚨
 </div>
+<br>
 
 **Big news** everyone -- I was recently informed by my estonian architect friend that one of these exotic phases of motorcycle usage [has already been employed](https://en.wikipedia.org/wiki/Rollie_Free) in the real world. 
 
@@ -112,19 +113,20 @@ He was aptly named "Rollie Free" -- and roll free he did, in a speed-o no less. 
 
 <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center; text-align: center; gap: 20px;">
   <div style="text-align: center;">
-    <img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_2.png" alt="exotic-biking-theory" style="width:45%;">
-    <figcaption><b>Theoretical prediction.</b></figcaption>
+    <img src="{{site.baseurl}}/assets/images/post_6/pi_over_2_2.jpeg" alt="exotic-biking-theory" style="width:45%;">
+    <figcaption><b>Theoretical prediction</b></figcaption>
   </div>
   <div style="text-align: center;">
     <img src="{{site.baseurl}}/assets/images/post_6/exotic_biking.png" alt="exotic-biking-reality" style="width:45%;">
-    <figcaption><b>Experimental evidence.</b></figcaption>
+    <figcaption><b>Experimental evidence</b></figcaption>
   </div>
 </figure>
 
 Rollie's near-nudity reinforces his insane coolness more than theoretical predictions ever could. We now know for sure how one rides a motorcycle when they drive at an angle of $\pi/2$ to vertical, and how profoundly cool they look. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_6/Rollie_free_1920.png" alt="exotic-biking" style="width:40%">
+<img src="{{site.baseurl}}/assets/images/post_6/Rollie_Free_1920.jpg" 
+alt="exotic-biking" style="width:40%">
 <figcaption><b>This time Rollie decided against his traditional underwear-only approach to motorcycling. Perhaps this was after a severe chafing incident.</b></figcaption>
 </figure>
 
