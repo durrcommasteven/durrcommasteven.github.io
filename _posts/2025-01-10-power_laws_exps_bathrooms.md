@@ -193,6 +193,7 @@ $$
 
 Well, this is the statement of 
 > No matter how much time has passed, the expected remaining time is the same
+
 In other words, this is [memorylessness](https://en.wikipedia.org/wiki/Memorylessness), and we are instantly left with only one distribution that gives us this: the exponential distribution:
 
 $$
