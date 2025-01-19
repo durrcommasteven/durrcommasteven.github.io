@@ -10,15 +10,13 @@ tags:
 
 excerpt: "Thoughts while waiting for the bathroom"
 header:
-  overlay_image: /assets/images/post_8/banner.png
-  overlay_filter: 0.1 # same as adding an opacity of 0.5 to a black background
+  overlay_image: /assets/images/post_8/banner8.png
+  overlay_filter: 0.15 # same as adding an opacity of 0.5 to a black background
 ---
 
 Suppose you're at a restaurant, you have to pee, and you're waiting at the bathroom door. It's been 5 minutes since the last person entered, and as you wait you start to construct a mental model of what the fuck that guy in there could possibly be doing. And using that model, you try to calculate the answer to the question:
 
 >"How much longer do I have to wait?"
-
-## The Waiting Game
 
 ### 5 minutes
 At 5 minutes, you're already running low on patience. Most people try to minimize the amount of time they spend in a public restroom, so this guy must really be going through something in there. This, you reason, is probably not going to be a short visit for him. You put the estimate for how much longer you have to wait at **~2.5 more minutes**. 
