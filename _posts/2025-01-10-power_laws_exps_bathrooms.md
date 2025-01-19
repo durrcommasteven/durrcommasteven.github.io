@@ -33,7 +33,7 @@ It's been an hour, you've told the staff, and now they're running around trying 
 Best case scenario, you get to finally pee in **30 minutes**. 
 
 ### Back at home
-But at the end of the night, you're back home. And once the adrenaline has worn off, and you've mouthwashed 11 times, and you've googled every permutation of the words "deadly weird foamy spit contagious", you start to think about the pattern of those time estimates. At first it was 2.5 minutes, but as the amount of time you already waited increased, your estimate of the remaining time left to pee grew proportionally:
+But at the end of the night, you're back home. And once the adrenaline has worn off, and you've mouthwashed 11 times, and you've googled every permutation of the words "deadly weird foamy spit contagious", you start to think about the pattern of those time estimates. At first it was 2.5 minutes, but as the amount of time you already waited increased, your estimate of the remaining time grew proportionally:
 
 | Time Waited (minutes) | Remaining Time Estimate (minutes) |
 |-----------------------|-----------------------------------|
@@ -67,7 +67,7 @@ $$
 p(T) \equiv \text{probability distribution of total-bathroom-trip-duration}
 $$
 
-If I have waited for a time $\tau$, what's the pdf for the amount of time $t$ I  _left_ to wait? This can be written:
+If I have waited for a time $\tau$, what's the pdf for the amount of time $t$ I have _left_ to wait? This can be written:
 
 $$
 p_{wait}(t | \tau) = \frac{p(t+\tau)}{\int_\tau^{\infty} dT p(T)}
@@ -107,13 +107,13 @@ $$
 \frac{d}{d \tau} \int_\tau^\infty dT (T-\tau) p(T) = - \int_\tau^\infty dT p(T)
 $$
 
-But if you look at the original fraction on the equation's left hand side, this almost matches the denominator (aside from the minus sign). That means we can define
+But if you look at that original fraction, this matches the denominator (aside from the minus sign). That means we can define
 
 $$
 F(\tau) \equiv \int_\tau^\infty dT \,  (T-\tau) p(T) 
 $$
 
-and write (adding a minus sign)
+and write (adding the minus sign)
 
 $$
 \frac{F(\tau)}{F'(\tau)} = -\gamma \tau
@@ -153,9 +153,9 @@ $$
 \langle t \rangle_\tau = \gamma \tau
 $$
 
-we can see that different values for $\gamma$ describe different degrees of optimism or pessimism. The larger the value of $\gamma$, the longer your waiting-time prediction gets. But now we can characterize that degree of optimism mathematically. 
+we can see that different values for $\gamma$ describe different degrees of optimism or pessimism. The larger the value of $\gamma$, the longer your waiting-time prediction gets. But now we can characterize that degree of pessimism with rigorous mathematical precision. 
 
-By integrating, we can compute each _moment_ of this distribution (the $n^{th}$ moment of a distribution is defined as $\langle T^n \rangle$). Once we go through the math we find that the $n^{th}$ moment only exist when $\gamma < \frac{1}{n-1}$. When this is the case, it has the value,
+By integrating, we can compute each _moment_ of this distribution (the $n^{th}$ moment of a distribution is defined as $\langle T^n \rangle$). Once we go through the math we find that the $n^{th}$ moment only exists when $\gamma < \frac{1}{n-1}$. When this is the case, it has the value,
 
 $$
 \langle T^n \rangle = \frac{\left(1 + \frac{1}{\gamma}\right) T_{\min}^n}{\left(1 + \frac{1}{\gamma}\right) - n}
@@ -166,7 +166,7 @@ $$
 <figcaption><b>More moments = more confidence in your ability to pee in the near future.</b></figcaption>
 </figure>
 
-Each moment describes some degree of fluctuation in an estimate about the time T. A moment not existing (being infinite) is a reflection of how much this estimate can vary. When these moments are infinite, the distribution is said to have a **heavy tail**. 
+Each moment describes some degree of fluctuation in an estimate about the time a bathroom trip will take. A moment not existing (being infinite) is a reflection of how much variability there is in $p(T)$. Roughly, when moments are infinite, the distribution is said to have a **heavy tail**. 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_8/ht.png" alt="heavy-tail" style="width:80%">
@@ -174,11 +174,30 @@ Each moment describes some degree of fluctuation in an estimate about the time T
 </figure>
 
 ### What does this mean? 
-Well, the smaller $\gamma$ is, the more optimistic we are, the more moments exist – you're optimistic, and you think you have a pretty good grasp on how long you might be waiting.  
+Well, the smaller $\gamma$ is, the more moments exist, and the more optimistic we are. Small $\gamma$ means you're optimistic, and you think you have a pretty good grasp on how long you might be waiting.  
 
-But if $\gamma \geq 1$, this math means your level of pessimism is basically catastrophic. You might be able to tell somebody how much time you think you have left to wait before you pee, but if they ask about your variance of that estimate, you'd burst into tears, because the variance is infinite. 
+But if $\gamma \geq 1$, this math means your level of pessimism is basically catastrophic. You might be able to tell somebody how much time you think you have left to wait before you pee, but if they ask about your uncertainty in that estimate, you'd burst into tears, because the variance is infinite. 
 
-When power laws have an exponent of 2, they're at this self-similar critical point. We can see the self-similarity that people talk about by the fact that for us it corresponds to $\gamma=\infty$. Regardless of how much time has elapsed, you think you'll have to wait an infinite amount of remaining time. 
+When power laws have an exponent of 2, they're at a self-similar critical point. We can see this self-similarity that people talk about because for us it corresponds to $\gamma=\infty$. Regardless of how much time has elapsed, you think you'll have to wait the same amount longer (an infinite amount of remaining time). 
+
+### Exponential Side-note 
+If 
+$$
+\langle t \rangle_\tau = \gamma \tau
+$$
+gives us a power law, what would we get with:
+
+$$
+\langle t \rangle_\tau = \Delta
+$$
+
+Well, this is the statement of 
+> No matter how much time has passed, the expected remaining time is the same
+In other words, this is [memorylessness](https://en.wikipedia.org/wiki/Memorylessness), and we are instantly left with only one distribution that gives us this: the exponential distribution:
+
+$$
+p_{exp}(T) = \Delta^{-1} e^{T/\Delta}
+$$
 
 ## Party-pooper Rebuttal / Stop-being-so-literal-and-just-enjoy-life Response
 
@@ -188,11 +207,13 @@ At this point you might be saying,
 You know what, you're probably right. This entire argument probably only has any validity in the extreme tails. But for the sake of this blog post, and for the sake of having fun, let's pretend that it is basically accurate.
 
 But then you might follow up with something like this 
-> "But Steve, every time I use the bathroom, the time I'm going to spend in there is very predictable – something I could characterize with a typical-value estimate, $t_0$ – not really true of power Laws. Also, I'm pretty sure this is true of everyone. How are you getting a power law out of a combination of a bunch of exponentials?" 
+> "But Steve, every time I use the bathroom, the time I'm going to spend in there is very predictable – something I could characterize with a typical-value estimate, $t_0$ – not really true for power laws. Also, I'm pretty sure this is true of everyone. How are you getting a power law out of a combination of a bunch of exponentials?" 
 
-Let's try to address this: if nobody's individual bathroom duration distribution has a heavy tail (each person's individual trip to the bathroom could be very well-characterized by a typical time $t_0$), then how could the average bathroom duration pdf, $p(T)$ have one?
+Let's try to address this: if nobody's individual bathroom duration distribution has a heavy tail (each person's individual trip to the bathroom could be very well-characterized by a typical time $t_0$), then how could the combined bathroom duration pdf, $p(T)$ have one?
 
-We'll say that each bathroom trip has a duration pdf described by an exponential with a characteristic time $t_0$. (Note that we really only care about the tails, here so I'm saying people spend an exponential distribution of time in the bathroom, even though of course the plurality of time spent in the bathroom is not 0 seconds). Again, let's write down what this would mean mathematically, if we expect some probabilistic combination of $t_0$'s to give us our $p(T)$:
+We'll say that each bathroom trip has a duration pdf described by an exponential with a characteristic time $t_0$. (Note that we really only care about the tails, here so I'm saying people spend an exponential distribution of time in the bathroom, even though of course the plurality of time spent in the bathroom is not 0 seconds). 
+
+Again, let's write down what this would mean mathematically if we expect some probabilistic combination of $t_0$'s to give us our $p(T)$:
 
 $$
 \int_0^\infty dt_0 \  t_0^{-1}e^{-T/t_0} \rho(t_0) = p(T)
@@ -210,10 +231,6 @@ It turns out that what I wrote above has a name, it's the laplace transform of $
 Therefore we can apply the _inverse_ Laplace transform to the power law $p(T)$, and get our solution:
 
 $$
-\rho(t_0) = \left(1+\frac{1}{\gamma}\right) T_{\min}^{1+\frac{1}{\gamma}} t_{0}^{1-\frac{1}{\gamma}} \Gamma\left(-\left(1+\frac{1}{\gamma}\right), \frac{T_{\min}}{t_0}\right)
-$$
-
-$$
 \rho(t_{0}) \;=\; \Bigl(1 + \frac{1}{\gamma}\Bigr)\; T_{\min}^{\,\bigl(1 + \tfrac{1}{\gamma}\bigr)}\, t_{0}^{\,\bigl(1 - \tfrac{1}{\gamma}\bigr)}\; \Gamma\!\Bigl(-\bigl(1 + \tfrac{1}{\gamma}\bigr),\,\frac{T_{\min}}{t_{0}}\Bigr) \quad \text{for } t_{0} > 0.
 $$
 
@@ -225,9 +242,11 @@ $$
 
 (don't worry, I had never heard of the "upper incomplete gamma function" either).
 
-What this is saying then, is that a bunch of exponentials, with their characteristic times distributed in a power law way, gives us a power law distribution in time. Every trip to the bathroom has a characteristic time it's going to take. It's the distribution of _types_ of trips to the bathroom that gives us the power law. 
+What this is saying then, is that a bunch of exponentials, with their characteristic times distributed in a power law way, gives us a power law distribution in time. 
 
-Remember that this is essentially what our imagined person waiting for the bathroom was intuitively doing. As time went by, he was excluding more and more scenarios, each of which would have some typical duration which was much shorter than the time he's already waited. By the time an hour went by, there were only the most rare explanations with a sufficiently long $t_0$ that were still possible, namely that the guy died or had decided to start living inside the bathroom. 
+> Every trip to the bathroom has a characteristic time it's going to take. It's the distribution of _types_ of trips to the bathroom that gives us the power law. 
+
+Remember that this is essentially what our imagined person waiting for the bathroom was intuitively doing. As time went by, he was excluding more and more scenarios, each of which had a typical duration which was much shorter than the time he's already waited. By the time an hour went by, there were only the most rare explanations with a sufficiently long $t_0$ that were still possible; namely that the guy died or had decided to start living inside the bathroom. 
 
 I plan on writing more about power laws, because they pop up in a bunch of interesting places. Hopefully you think about them next time you use the bathroom.
 
