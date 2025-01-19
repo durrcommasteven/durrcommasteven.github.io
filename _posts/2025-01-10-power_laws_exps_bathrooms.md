@@ -19,13 +19,13 @@ Suppose you're at a restaurant, you have to pee, and you're waiting at the bathr
 >"How much longer do I have to wait?"
 
 ### 5 minutes
-At 5 minutes, you're already running low on patience. Most people try to minimize the amount of time they spend in a public restroom, so this guy must really be going through something in there. This, you reason, is probably not going to be a short visit for him. You put the estimate for how much longer you have to wait at **~2.5 more minutes**. 
+After 5 minutes, you're running low on patience. Most people try to minimize the amount of time they spend in a public restroom, so this guy must really be going through something in there. This, you reason, is probably not going to be a short visit for him. You put the estimate for how much longer you have to wait at **~2.5 more minutes**. 
 
 ### 10 minutes
 By 10 minutes, you're exasperated. Your model for what is happening in that bathroom is starting to involve medical terminology. Is a catheter involved? Some sort of bag? You don't want to think too hard about it, but now your time estimate for time remaining to wait increases to **5 more minutes**. 
 
 ### 20 minutes
-By 20 minutes, you think, "There's no way something normal is happening in there. This is definitely a medical event – something like food-poisoning". You'll be lucky if this guy's out in the next 10 minutes. 
+By 20 minutes, you think, "There's no way something normal is happening in there. This is definitely a medical event – something like food-poisoning". You'll be lucky if this guy's out in the next **10 minutes**. 
 
 ### 60 minutes
 It's been an hour, you've told the staff, and now they're running around trying to find the key to unlock the bathroom door from the outside. You imagine this fucking guy laying on the floor in there with some kind of foaming spittle pouring out of his mouth. Maybe an ambulance will be called (how long does that take?), meanwhile somebody's going to have to do mouth to mouth -- and you bet it's gunna have to be you, because you're the one who told everybody about this guy, and you took that CPR class once – and you _know_ you won't be allowed to say "no" because you're grossed out by the weird foamy spit. Meanwhile, the chest compressions will _for sure_ be done inside the bathroom where they're gunna find the guy - nobody's gunna care that you have to had to piss for well over an hour. Then it's gunna be all weird to pee in there if he just died. 
