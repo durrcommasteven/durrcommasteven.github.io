@@ -10,7 +10,7 @@ tags:
 
 excerpt: "Thoughts while waiting for the bathroom"
 header:
-  overlay_image: /assets/images/post_8/banner8.png
+  overlay_image: /assets/images/post_8/banner_mid.png
   overlay_filter: 0.15 # same as adding an opacity of 0.5 to a black background
 ---
 
