@@ -197,7 +197,7 @@ Well, this is the statement of
 In other words, this is [memorylessness](https://en.wikipedia.org/wiki/Memorylessness), and we are instantly left with only one distribution that gives us this: the exponential distribution:
 
 $$
-p_{exp}(T) = \Delta^{-1} e^{T/\Delta}
+p_{exp}(T) = \Delta^{-1} e^{-T/\Delta}
 $$
 
 ## Party-pooper Rebuttal / Stop-being-so-literal-and-just-enjoy-life Response
