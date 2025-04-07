@@ -174,7 +174,7 @@ Each moment describes some degree of fluctuation in an estimate about the time a
 </figure>
 
 ### What does this mean? 
-Well, the smaller $\gamma$ is, the more moments exist, and the more optimistic we are. Small $\gamma$ means you're optimistic, and you think you have a pretty good grasp on how long you might be waiting.  
+Well, the smaller $\gamma$ is, the more moments exist, and the more optimistic we are. Small $\gamma$ means you think you have a pretty good grasp on how long you might be waiting.  
 
 But if $\gamma \geq 1$, this math means your level of pessimism is basically catastrophic. You might be able to tell somebody how much time you think you have left to wait before you pee, but if they ask about your uncertainty in that estimate, you'd burst into tears, because the variance is infinite. 
 
@@ -235,13 +235,13 @@ $$
 \rho(t_{0}) \;=\; \Bigl(1 + \frac{1}{\gamma}\Bigr)\; T_{\min}^{\,\bigl(1 + \tfrac{1}{\gamma}\bigr)}\, t_{0}^{\,\bigl(1 - \tfrac{1}{\gamma}\bigr)}\; \Gamma\!\Bigl(-\bigl(1 + \tfrac{1}{\gamma}\bigr),\,\frac{T_{\min}}{t_{0}}\Bigr) \quad \text{for } t_{0} > 0.
 $$
 
-where we used the "upper incomplete gamma function" 
+where we used the "upper incomplete" gamma function
 
 $$
 \Gamma(a, z) = \int_z^\infty t^{a-1} e^{-t} dt
 $$
 
-(don't worry, I had never heard of the "upper incomplete gamma function" either).
+(don't worry, I had never heard of the "upper incomplete" version of the gamma function either).
 
 What this is saying then, is that a bunch of exponentials, with their characteristic times distributed in a power law way, gives us a power law distribution in time. 
 
@@ -249,6 +249,6 @@ What this is saying then, is that a bunch of exponentials, with their characteri
 
 Remember that this is essentially what our imagined person waiting for the bathroom was intuitively doing. As time went by, he was excluding more and more scenarios, each of which had a typical duration which was much shorter than the time he's already waited. By the time an hour went by, there were only the most rare explanations with a sufficiently long $t_0$ that were still possible; namely that the guy died or had decided to start living inside the bathroom. 
 
-I plan on writing more about power laws, because they pop up in a bunch of interesting places. Hopefully you think about them next time you use the bathroom.
+I plan on writing more about power laws, because they pop up in a bunch of interesting places. Hopefully you think about them next time you're waiting for the bathroom.
 
 
