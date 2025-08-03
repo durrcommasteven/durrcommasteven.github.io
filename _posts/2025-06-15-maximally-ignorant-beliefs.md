@@ -25,7 +25,7 @@ $$
 P(p|\{data\}) = \frac{P(\{data\}|p)Prior(p)}{P(\{data\})}
 $$
 
-This all sounds good, but hold on… where does this prior, $Prior(p)$ come from? I already said I have no idea what $p$ is, but by specifying $Prior(p)$, now I'm saying "psych, I actually _do_ have some beliefs about it".
+This all sounds good, but hold on… how do we know what this thing "$Prior(p)$" should be? I already said I have no idea what $p$ is, but by specifying $Prior(p)$, I'm saying "psych, I actually _do_ have some beliefs about it".
 
 Where does this prior, $Prior(p)$ come from? What is $Prior(p)$? 
 
@@ -106,7 +106,7 @@ $$
 Great! Now we can do a little math and get a big bucket of distinguishable theories by finding the smallest epsilon so that $$KL(p\|p+\epsilon) = threshold$$.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_9/kl_divergence_animation.webp" alt="kl-animation" style="width:80%">
+<img src="{{site.baseurl}}/assets/images/post_9/kl_divergence_animation.webp" alt="kl-animation" style="width:100%">
 </figure>
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
