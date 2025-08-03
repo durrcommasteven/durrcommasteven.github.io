@@ -13,7 +13,7 @@ tags:
 
 excerpt: "what to think when you know nothing"
 header:
-  overlay_image: /assets/images/post_9/banner.png
+  overlay_image: /assets/images/post_9/statistical_geometry_banner.png
   overlay_filter: 0.15 # same as adding an opacity of 0.5 to a black background
 ---
 
@@ -85,18 +85,25 @@ Let's go back to the problem of choosing a prior for the probability of a coin c
 Now we have to define what we mean by "different". Let's get concrete: let's say that a theory $p+\epsilon$ is "different" from $p$, if by looking at $N$ coin flips from $p$, I can with some fixed degree of confidence say that this data does NOT come from $p+\epsilon$.
 
 It turns out this is related to a quantity called the KL divergence by 
+$$
+N \sim 1/KL(p\|q)
+$$
+where
+$$
+KL(p\|q) = \sum_x p(x) \log(p(x)/q(x))
+$$
+and $x$ is every 'event' which can occur (we also can integrate, but let's only consider sums for now).
+
+If you know what KL divergence is, then this is still neat, but almost a tautology. In a very rigorous way, the KL divergence tells you how much extra "surprise" you should get from your data if you think it comes from $q$, but it _actually_ comes from $p$. Where here "surprise" is measured in nats (bits in base $e$).
+<sup>[1](#myfootnote1)</sup>
+
+Intuitively (and actually), on average each experiment will give you the same amount of nats of information $$KL(p\|q)$$. So If you specify a fixed surprise threshold, $S$, then the number of experiments you require ($N$) should obey
 
 $$
-N \sim 1/KL(p|q)
+S \sim N \cdot KL(p\|q) \text{ and so } N \sim 1/KL(p\|q)
 $$
 
-If you know what KL divergence is, then this is still neat, but almost a tautology. In a very rigorous way, the KL divergence tells you how much extra "surprise" you should get from your data if you think it comes from $q$, but it _actually_ comes from $p$. Where here "surprise" is measured in nats (bits in base $e$)<sup>[1](#myfootnote1)</sup>. Intuitively (and actually), on average each experiment will give you the same amount of nats of information $KL(p|q)$. So If you specify a fixed surprise threshold, $S$, then the number of experiments you require ($N$) should obey
-
-$$
-S \sim N \cdot KL(p|q) \text{ and so } N \sim 1/KL(p|q)
-$$
-
-Great! Now we can do a little math and get a big bucket of distinguishable theories by finding the smallest epsilon so that $KL(p|p+\epsilon) = threshold$.
+Great! Now we can do a little math and get a big bucket of distinguishable theories by finding the smallest epsilon so that $$KL(p\|p+\epsilon) = threshold$$.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_9/kl_divergence_animation.webp" alt="kl-animation" style="width:80%">
@@ -118,10 +125,10 @@ If we look at this plot of different theories, we can see that they aren't unifo
 I want a concrete formula for $Prior(p)$, so Let's get more precise, and take $N$ (the number of times we can flip the coin) to infinity. Our theories $p$ and $p+\epsilon$ are going to be pretty close together, so we do a little math (Taylor expanding) and find that for small $\epsilon$,
 
 $$
-KL(p|p+\epsilon) = \frac{\epsilon^2}{2p(1-p)}
+KL(p\|p+\epsilon) = \frac{\epsilon^2}{2p(1-p)}
 $$
 
-And so, setting $KL(p|p+\epsilon)$ equal to a constant small surprise threshold gives us:
+And so, setting $KL(p\|p+\epsilon)$ equal to a constant small surprise threshold gives us:
 
 $$
 S = \frac{\epsilon^2}{2p(1-p)}
@@ -151,23 +158,23 @@ If we think a little harder about this plot, we can finally go full circle.
 we can see that each one of these curves is kind of like a parabola. I say "kind of like", but we can make this rigorous. If we evaluate the taylor series here, we get 
 
 $$
-KL(p, p+\epsilon) \approx KL(p| p) + \epsilon \left(\frac{dKL(p| q)}{dq}\right)\bigg|_{q=p} + \frac{\epsilon^2}{2} \left(\frac{d^2KL(p| q)}{dq^2}\right)\bigg|_{q=p}
+KL(p, p+\epsilon) \approx KL(p\| p) + \epsilon \left(\frac{dKL(p\| q)}{dq}\right)\bigg|_{q=p} + \frac{\epsilon^2}{2} \left(\frac{d^2KL(p\| q)}{dq^2}\right)\bigg|_{q=p}
 $$
 
 now we can simplify. Here I'm going to overload $p$ as denoting both the parameter of the probability, and the probability distribution function itself $p(x)$:
 
 $$
-KL(p| p) = 0
+KL(p\| p) = 0
 $$
 
 $$
-\left(\frac{dKL(p| q)}{dq}\right)\bigg|_{q=p} = \frac{d}{dq} \left(\sum_x p(x) \log(p(x) / q(x))\right)\bigg|_{q=p} = - \left(\sum_x p'(x)\right) = \frac{d}{dp} \left(\sum_x p(x)\right) = \frac{d}{dp} 1 = 0
+\left(\frac{dKL(p\| q)}{dq}\right)\bigg|_{q=p} = \frac{d}{dq} \left(\sum_x p(x) \log(p(x) / q(x))\right)\bigg|_{q=p} = - \left(\sum_x p'(x)\right) = \frac{d}{dp} \left(\sum_x p(x)\right) = \frac{d}{dp} 1 = 0
 $$
 
 Now we have the second order parabolic term. We need to massage this one a tiny bit, but without too much trouble we get that 
 
 $$
-\left(\frac{d^2KL(p| q)}{dq^2}\right)\bigg|_{q=p} = \sum_x p(x) \left(\frac{p'(x)}{p(x)}\right)^2 = \sum_x p(x) \left(\frac{d}{dp} \log(p(x))\right)^2
+\left(\frac{d^2KL(p\| q)}{dq^2}\right)\bigg|_{q=p} = \sum_x p(x) \left(\frac{p'(x)}{p(x)}\right)^2 = \sum_x p(x) \left(\frac{d}{dp} \log(p(x))\right)^2
 $$
 
 This last term has another name, the Fisher Information: 
@@ -179,10 +186,10 @@ $$
 So the taylor expansion to second order reduces to 
 
 $$
-KL(p|p+\epsilon) \approx \frac{1}{2} \mathcal{I}(p) \epsilon^2 
+KL(p\|p+\epsilon) \approx \frac{1}{2} \mathcal{I}(p) \epsilon^2 
 $$
 
-Because the previous terms are zero, the Fisher information $\mathcal{I}(p)$ totally defines $KL(p| p+ \epsilon)$ for small $\epsilon$.
+Because the previous terms are zero, the Fisher information $\mathcal{I}(p)$ totally defines $KL(p\| p+ \epsilon)$ for small $\epsilon$.
 
 And so in general, fixing a KL divergence threshold gives us a density of prior probabilities of 
 
@@ -207,7 +214,7 @@ $$<sup>[2](#myfootnote2)</sup>
 But knowing what we know, wouldn't we almost guess this? After $N$ experiments, you have 
 
 $$
-KL(p|p+\epsilon) \approx \frac{1}{2} \mathcal{I}(\theta) \epsilon^2 
+KL(p\|p+\epsilon) \approx \frac{1}{2} \mathcal{I}(\theta) \epsilon^2 
 $$
 
 Therefore the 'resolution' of theory space with $N$ experiments is $\propto 1/\sqrt{N \mathcal{I}(\theta)}$. A rough estimate of the uncertainty given that $p$ and $p+\epsilon$ are just as good tells you 
@@ -223,7 +230,7 @@ The more you learn about information theory, the more inevitable and interrelate
 ## A note about the banner to this article 
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_9/banner.png" alt="banner" style="width:80%">
+<img src="{{site.baseurl}}/assets/images/post_9/statistical_geometry_banner.png" alt="banner" style="width:80%">
 </figure>
 
 pixels are colored using the jet colormap, but chosen as a function of the distance between theories. It turns out that there is one parametrization $\phi$ of the coin flip probabilities, in which changing the parameters by a constant amount $\Delta \phi$ changes the resulting theory by a constant amount:
