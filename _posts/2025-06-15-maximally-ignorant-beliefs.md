@@ -172,7 +172,7 @@ KL(p\| p) = 0
 $$
 
 $$
-\left(\frac{dKL(p\| q)}{dq}\right)\bigg|_{q=p} = \frac{d}{dq} \left(\sum_x p(x) \log(p(x) / q(x))\right)\bigg|_{q=p} = - \left(\sum_x p'(x)\right) = \frac{d}{dp} \left(\sum_x p(x)\right) = \frac{d}{dp} 1 = 0
+\left(\frac{dKL(p\| q)}{dq}\right)\bigg|_{q=p} = \frac{d}{dq} \left(\sum_x p(x) \log(p(x) / q(x))\right)\bigg|_{q=p} = - \left(\sum_x p'(x)\right) = -\frac{d}{dp} \left(\sum_x p(x)\right) = -\frac{d}{dp} 1 = 0
 $$
 
 Now we have the second order parabolic term. We need to massage this one a tiny bit, but without too much trouble we get that 
@@ -243,7 +243,7 @@ $$
 \phi = \arcsin(\sqrt{p})
 $$
 
-Here, here, the pixels are colored using the jet colormap, but chosen as a function of this version of distance. Scaling $\phi_{\min}$ and $\phi_{\max}$ to the colormap's start and stop, and adding in a tiny bit of noise (for fun), we can see how changing the probability by a constant amount modifies the resulting theory (the colors). We sweep through the colors quickly near the edges, but near $p=0$ they're less dense.
+Here, here, the pixels are colored using the jet colormap, but chosen as a function of this version of distance. Scaling $\phi_{\min}$ and $\phi_{\max}$ to the colormap's start and stop, and adding in a tiny bit of noise (for fun), we can see how changing the probability by a constant amount modifies the resulting theory (the colors). We sweep through the colors quickly near the edges, but near $p=1/2$ (the middle) they're less dense.
 
 ---
 
