@@ -115,7 +115,7 @@ Great! Now we can do a little math and get a big bucket of distinguishable theor
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_9/kl_divergence_final_state.png" alt="kl-final" style="width:80%">
-<figcaption><b>The theories you get if you make sure they're "distinct"</b></figcaption>
+<figcaption><b>The theories you get if you make sure they're "different"</b></figcaption>
 </figure>
 
 # Choosing From the p's
