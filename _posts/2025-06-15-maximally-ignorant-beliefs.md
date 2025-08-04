@@ -29,7 +29,7 @@ This all sounds good, but hold on… how do we know what this thing "$Prior(p)$"
 
 Where does this prior, $Prior(p)$ come from? What is $Prior(p)$? 
 
-Basically, the question is, how do you form a prior for some parameter $p$, when you have absolutely no idea what $p$ should be. How do you mathematically state your beliefs when you have none, when you are in a state of "maximal ignorance". 
+Basically, the question is, how do you form a prior for some parameter $p$, when you have absolutely no idea what $p$ should be. How do you mathematically state your beliefs when you have none; when you are in a state of "maximal ignorance". 
 
 # ~~Jeffreys's Argument~~ The Argument of Jeffreys
 
@@ -51,10 +51,12 @@ I mean obviously he didn't say this, but the idea is that you don't _have_ to us
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="{{site.baseurl}}/assets/images/post_9/priors_pic.png" alt="priors" style="width:80%">
-<figcaption><b>The uniform p prior, and uniform logit (gum) prior</b></figcaption>
+<figcaption><b>The uniform p prior, and uniform logit (gum) prior. Why use one over another?</b></figcaption>
 </figure>
 
 The answer is that your maximal ignorance prior shouldn't depend on your parametrization. In fact, if you said one parametrization was "better" than another (choosing $p$ vs $g$), then you'd be bringing some beliefs to this problem (beliefs like "that whole 'gum weight' analogy you wasted my time with was dumb"), and so you would immediately be failing in your goal of maximal ignorance.  
+
+# A Non-Explanation
 
 Jeffreys said that the solution is to use a quantity which is invariant under reparametrization, namely the square root of the Fisher information: $\sqrt{\mathcal{I}(\theta)}$ (where $\theta$ is whatever parametrization you're currently using), because
 
@@ -74,15 +76,17 @@ This is basically where every tutorial I've seen about the Jeffreys prior ends. 
 
 This always pisses me off because we're left with a proof that it's right, but utterly no understanding.
 
-Now if you already know what the square root of the Fisher information represents, then sure, this explanation is fine. But if you don't _already_ know, then this explanation is useless to you. This is how a lot of math textbooks are: clearly written by people who already have gotten to the point of understanding everything, and have seemingly forgotten how they did that exactly. 
+Now if you already know what the square root of the Fisher information represents, then sure, this explanation is fine. But if you don't, then this explanation is useless to you. This is how a lot of math textbooks are: clearly written by people who have already gotten to the point of understanding everything, and have seemingly forgotten exactly how they got there.
+
+# An Explanation
 
 I prefer a different explanation of the Jeffreys prior. I came up with this while explaining it a few years back. I'm sure that it's somewhere online but I haven't seen it exactly like this, and having done no research at all, I think with maximum ignorance I can assert that this explanation is mine. 
 
 Let's go back to the problem of choosing a prior for the probability of a coin coming up heads. I'm going to call each probability $p$, a "theory". We're still totally on board with the idea that each distinct theory is equally probable, since we still have no reason to choose one theory over a different one.
 
-# listing out the different p's
+# Listing Out the "Different" p's
 
-Now we have to define what we mean by "different". Let's get concrete: let's say that a theory $p+\epsilon$ is "different" from $p$, if by looking at $N$ coin flips from $p$, I can with some fixed degree of confidence say that this data does NOT come from $p+\epsilon$.
+First we have to define what we mean by "different". Let's get concrete: let's say that a theory $p+\epsilon$ is "different" from $p$, if by looking at $N$ coin flips from $p$, I can with some fixed degree of confidence say that this data does NOT come from $p+\epsilon$.
 
 It turns out this is related to a quantity called the KL divergence by 
 $$
@@ -92,7 +96,7 @@ where
 $$
 KL(p\|q) = \sum_x p(x) \log(p(x)/q(x))
 $$
-and $x$ is every 'event' which can occur (we also can integrate, but let's only consider sums for now).
+and $x$ is every 'event' which can occur (here, a head or a tail). (For continuous events, we also can integrate, but let's only consider sums for now)
 
 If you know what KL divergence is, then this is still neat, but almost a tautology. In a very rigorous way, the KL divergence tells you how much extra "surprise" you should get from your data if you think it comes from $q$, but it _actually_ comes from $p$. Where here "surprise" is measured in nats (bits in base $e$).
 <sup>[1](#myfootnote1)</sup>
@@ -114,11 +118,11 @@ Great! Now we can do a little math and get a big bucket of distinguishable theor
 <figcaption><b>The theories you get if you make sure they're "distinct"</b></figcaption>
 </figure>
 
-# Choosing from the p's
+# Choosing From the p's
 
 Now that I've really listed out all the possible distinguishable theories, I can actually go about choosing one with maximum ignorance - that is, I can take one $p$ from this bucket of different theories totally at random. _This_ is the correct prior over $p$.
 
-# the resulting Prior(p)
+# The Resulting Prior(p)
 
 If we look at this plot of different theories, we can see that they aren't uniformly spaced. It looks like there are more theories near 0 and 1. Something interesting is going on.
 
@@ -146,7 +150,7 @@ $$
 
 There we have it -- the density of distinguishable theories. A sample from this distribution gives us the Jeffreys prior. 
 
-# full circle 
+# Full Circle 
 
 If we think a little harder about this plot, we can finally go full circle. 
 
@@ -199,7 +203,7 @@ $$
 
 Which brings us back to what that proofy, non-explanation we initially saw claimed, but now we know _why_. Specifically, $\sqrt{\mathcal{I}(p)}$ tells us how 'quickly' the theories change at a point $p$. It's like the natural volume element in theory-space – a sort of minimal pixel size of a theory as a function of its parameters – which tells us how much a theory changes as you vary them. 
 
-Our initial flaw (and laplace's) in assuming that every probability was equally likely ($Prior(p)=1$), was in using the wrong metric. In reality, theories can 'bunch up' in certain areas of parameter space. It's as if we tried to do an opinion poll of the US by sampling one person per 500 square miles. We'd only get one person from NYC, even though it makes up $\sim 3\%$ of the US. 
+Our initial flaw (and Laplace's) in assuming that every probability was equally likely ($Prior(p)=1$), was in using the wrong metric. In reality, theories can 'bunch up' in certain areas of parameter space. It's as if we tried to do an opinion poll of the US by sampling one person per 500 square miles. We'd only get one person from NYC, even though it makes up $\sim 3\%$ of the US. 
 
 # Extra Nats of Information
 
@@ -214,7 +218,7 @@ $$<sup>[2](#myfootnote2)</sup>
 But knowing what we know, wouldn't we almost guess this? After $N$ experiments, you have 
 
 $$
-KL(p\|p+\epsilon) \approx \frac{1}{2} \mathcal{I}(\theta) \epsilon^2 
+KL(p\|p+\epsilon) \approx \frac{1}{2} N \mathcal{I}(\theta) \epsilon^2 
 $$
 
 Therefore the 'resolution' of theory space with $N$ experiments is $\propto 1/\sqrt{N \mathcal{I}(\theta)}$. A rough estimate of the uncertainty given that $p$ and $p+\epsilon$ are just as good tells you 
@@ -223,9 +227,9 @@ $$
 \text{Min}(\text{Var}(\hat{\theta})) \propto (\epsilon/2)^2 \propto \frac{1}{N \mathcal{I}(\theta)}
 $$ 
 
-The 'result' part of the Cramer-Rao bound seems to be the constant they place on the relationship.
+The 'result' part of the Cramer-Rao bound just seems to be the constant they place on this relationship.
 
-The more you learn about information theory, the more inevitable and interrelated it feels. Which is a lot of fun.
+The more you learn about information theory, the more inevitable and interrelated it feels, which is a lot of fun.
 
 ## A note about the banner to this article 
 
@@ -233,13 +237,13 @@ The more you learn about information theory, the more inevitable and interrelate
 <img src="{{site.baseurl}}/assets/images/post_9/statistical_geometry_banner.png" alt="banner" style="width:80%">
 </figure>
 
-pixels are colored using the jet colormap, but chosen as a function of the distance between theories. It turns out that there is one parametrization $\phi$ of the coin flip probabilities, in which changing the parameters by a constant amount $\Delta \phi$ changes the resulting theory by a constant amount:
+It turns out that there is one parametrization $\phi$ of the coin flip probabilities, in which changing the parameters by a constant amount $\Delta \phi$ changes the resulting theory by a constant amount:
 
 $$
 \phi = \arcsin(\sqrt{p})
 $$
 
-Scaling $\phi_{\min}$ and $\phi_{\max}$ to the colormap, and adding in a tiny bit of noise (for fun), shows us how changing the probability by a constant amount modifies the resulting theory (the colors). We sweep through the colors quickly near the edges, but near $p=0$ they're less dense.
+Here, here, the pixels are colored using the jet colormap, but chosen as a function of this version of distance. Scaling $\phi_{\min}$ and $\phi_{\max}$ to the colormap's start and stop, and adding in a tiny bit of noise (for fun), we can see how changing the probability by a constant amount modifies the resulting theory (the colors). We sweep through the colors quickly near the edges, but near $p=0$ they're less dense.
 
 ---
 
