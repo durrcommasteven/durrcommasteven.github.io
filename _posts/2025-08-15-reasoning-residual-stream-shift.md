@@ -21,7 +21,7 @@ header:
 ---
 
 
-I worked on this mech-interp research last summer with [Andy Arditi](https://www.andyrdt.com/) (currently at the very cool [David Bau lab](https://baulab.info/) at Northeastern) as part of the winter 2025 cohort of [SPAR](https://sparai.org/). This is a focused case study on DeepSeek-R1-Distill-Llama-8B, and not a sweeping global investigation, but it does suggest that reasoning is a totally distinct mode of text output for the model. I find this reasoning transition fascinating and think it deserves more research, which I intend to pursue. In the meantime, I thought I'd share the current draft of the work here.
+I worked on this mech-interp research last summer with [Andy Arditi](https://www.andyrdt.com/) (currently at the very cool [David Bau lab](https://baulab.info/) at Northeastern) as part of the winter 2025 cohort of [SPAR](https://sparai.org/). This is a focused case study on DeepSeek-R1-Distill-Llama-8B, and not a sweeping global investigation, but it does suggest that models might treat reasoning as a totally distinct mode of text output. I find this reasoning mode transition fascinating and think it deserves more research, which I intend to pursue. In the meantime, though, I thought I'd share the current draft of the work here.
 
 
 # Abstract
