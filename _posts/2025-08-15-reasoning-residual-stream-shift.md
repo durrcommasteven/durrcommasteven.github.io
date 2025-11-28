@@ -20,6 +20,7 @@ header:
   overlay_filter: 0.15 
 ---
 
+
 I worked on this mech-interp research last summer with [Andy Arditi](https://www.andyrdt.com/) (currently at the very cool [David Bau lab](https://baulab.info/) at Northeastern) as part of the winter 2025 cohort of [SPAR](https://sparai.org/). This is a focused case study on DeepSeek-R1-Distill-Llama-8B, and not a sweeping global investigation, but it does suggest that reasoning is a totally distinct mode of text output for the model. I find this reasoning transition fascinating and think it deserves more research, which I intend to pursue. In the meantime, I thought I'd share the current draft of the work here.
 
 
@@ -57,7 +58,7 @@ $$
 As a convention, we define the difference vector, $\delta^l = \mu_{\text{ans.}}^{l} - \mu_{\text{reas.}}^{l}$, to point from reasoning mode towards answering mode. We thus refer to it as the *answering mode vector*.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/tiny_layer_20_cosine_similarity_diff_in_means.pdf" alt="domain-comparison" style="width:60%">
+<img src="{{site.baseurl}}/assets/images/post_10/images/tiny_layer_20_cosine_similarity_diff_in_means.png" alt="domain-comparison" style="width:60%">
 <figcaption><b>Reasoning→answering vectors are similar among math datasets (top-left block), and among non-math datasets (bottom-right block). Math (1), (2), and (3) correspond to MMLU College Mathematics, MMLU Abstract Algebra, and GSM8K, respectively. Non-math (1) and (2) correspond to MMLU Philosophy and MMLU High School US History, respectively.</b></figcaption>
 </figure>
 
@@ -72,8 +73,8 @@ We verify that the linear separability of the residual stream is not simply an a
 We additionally observe that the difference directions sourced from adjacent layers are generally close, particularly later in the network (figure below, right). Note that the difference direction at the last layer (layer 31) is an exception, and is quite different from subsequent directions. This is not surprising, as the final post-MLP residual stream vector feeds almost directly into the unembedding layer.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/math_projection.pdf" alt="projection" style="width:59%; display: inline-block;">
-<img src="{{site.baseurl}}/assets/images/post_10/cosine_similarity_math_tot.pdf" alt="cosine-sim" style="width:39%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/images/math_projection.png" alt="projection" style="width:59%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/images/cosine_similarity_math_tot.png" alt="cosine-sim" style="width:39%; display: inline-block;">
 <figcaption><b>Left: mean projection of token activations onto the unit difference-in-means direction $\hat{\delta}^{l}$ at each layer $l$, split by answering and reasoning. Right: cosine similarity matrix between layer-wise shift directions, $\cos(\delta^{i},\delta^{j})$.</b></figcaption>
 </figure>
 
@@ -88,7 +89,7 @@ where $\hat{\delta}^{l} = \frac{\delta^{l}}{\lvert \lvert \delta^l \rvert \rvert
 Averaging $p^{l}_{t}$ over examples reveals a sharp transition from negative (reasoning) to positive (answering) at $k=0$ (figure below). This directly demonstrates a linear shift in activation space corresponding to the reasoning→answering boundary, akin to a toggle switch.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/math_transition_total.pdf" alt="transition" style="width:95%">
+<img src="{{site.baseurl}}/assets/images/post_10/images/math_transition_total.png" alt="transition" style="width:95%">
 <figcaption><b>Reasoning→answering transition at the <code>&lt;/think&gt;</code> boundary. For $l\in\{ 5, 15,25\}$, we plot the average projection $p_t^{l}=\langle \mathbf{h}^{l}_{t},\hat{\delta}^{l}\rangle$ of token activations onto the unit difference-in-means direction as a function of token offset $k$ from the closing <code>&lt;/think&gt;</code> tag (negative $k$: reasoning region; positive $k$: answering). The projection abruptly flips sign at $k{=}0$, corresponding precisely to the <code>&lt;/think&gt;</code> boundary.</b></figcaption>
 </figure>
 
@@ -108,8 +109,8 @@ We use the standard prompt format to produce at most 100 reasoning tokens (endin
 ## Single-layer injections
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/summary_maximum_gap_closure_v1.pdf" alt="gap-closure" style="width:48%; display: inline-block;">
-<img src="{{site.baseurl}}/assets/images/post_10/summary_optimal_steering_coefficients_v1.pdf" alt="steering-coeff" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/images/summary_maximum_gap_closure_v1.png" alt="gap-closure" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/images/summary_optimal_steering_coefficients_v1.png" alt="steering-coeff" style="width:48%; display: inline-block;">
 <figcaption><b>Left: Using the optimal steering protocol over all samples, within only a single layer results in a noticeable but incomplete gap closure of at most around 0.4 for answering → reasoning, and around 0.1 for reasoning → answering.</b></figcaption>
 </figure>
 
@@ -145,7 +146,7 @@ More broadly, our results contribute to understanding how reasoning models inter
 We sampled 100 prompts from a range of subjects from MMLU, as well as GSM-8K, and computed the subject-specific difference-in means. Using this, we computed the cosine-similarities across subjects. Interestingly, these subjects appear to separate based mostly on whether they are mathematical or not.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/layer_20_cosine_similarity_diff_in_means.pdf" alt="cross-subject" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_10/images/layer_20_cosine_similarity_diff_in_means.png" alt="cross-subject" style="width:100%">
 <figcaption><b>While all difference-in-means vectors show some alignment (here, all are above .32), a distinct grouping exists for mathematical subjects.</b></figcaption>
 </figure>
 
@@ -154,11 +155,11 @@ We sampled 100 prompts from a range of subjects from MMLU, as well as GSM-8K, an
 For all subjects, there exists a clear separation between reasoning and answering modes within the residual stream. The figure below shows four representative projections along the difference-in-means vector. We observe the greatest cross-subject variation in the final layer, which is expected since the post-MLP residual stream at this layer feeds nearly directly into the unembedding layer and should therefore be highly subject-specific.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_abstract_algebra.pdf" alt="abstract-algebra" style="width:48%; display: inline-block;">
-<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_college_chemistry.pdf" alt="chemistry" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_abstract_algebra.png" alt="abstract-algebra" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_college_chemistry.png" alt="chemistry" style="width:48%; display: inline-block;">
 <br>
-<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_college_physics.pdf" alt="physics" style="width:48%; display: inline-block;">
-<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_high_school_us_history.pdf" alt="history" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_college_physics.png" alt="physics" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/subject_diff_samples/divergence_plot_mmlu_high_school_us_history.png" alt="history" style="width:48%; display: inline-block;">
 <figcaption><b>The projection of reasoning and answering residual stream values along the subject-specific difference-in-means vector across layers. Overall, a clear separation between reasoning and answering can be found in all subjects examined.</b></figcaption>
 </figure>
 
@@ -169,11 +170,11 @@ As in the main text, for each subject, we additionally computed the transition o
 To use a single vector of comparison, we compute the difference-in-means across all MMLU subjects $\hat{\delta}^l_{tot}$, and project each subject's residual stream values (post-MLP) along this direction. In the figure below we plot the mean projections for MMLU Miscellaneous, MMLU College Physics, and the average over all MMLU subjects. In each, a sharp boundary can be found immediately at the `</think>` token position.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/transitions/transition_mmlu_miscellaneous.pdf" alt="misc" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_10/transitions/transition_mmlu_miscellaneous.png" alt="misc" style="width:100%">
 <br>
-<img src="{{site.baseurl}}/assets/images/post_10/transitions/transition_mmlu_college_physics.pdf" alt="physics-trans" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_10/transitions/transition_mmlu_college_physics.png" alt="physics-trans" style="width:100%">
 <br>
-<img src="{{site.baseurl}}/assets/images/post_10/transitions/transition_total.pdf" alt="total-trans" style="width:100%">
+<img src="{{site.baseurl}}/assets/images/post_10/transitions/transition_total.png" alt="total-trans" style="width:100%">
 <figcaption><b>The projection of each subject's residual stream along $\hat{\delta}^l_{tot}$ shows a sharp transition across the <code>&lt;/think&gt;</code> token.</b></figcaption>
 </figure>
 
@@ -221,8 +222,8 @@ and normalized each residual vector by subtracting its corresponding $\mu(t,l)$.
 We applied token normalization to a sample of 100 GSM-8K prompts and compared the resulting difference-in-means with the raw values.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/gsm8k_reasoning_vs_answering_token_normed.pdf" alt="token-norm" style="width:48%; display: inline-block;">
-<img src="{{site.baseurl}}/assets/images/post_10/gsm8k_reasoning_vs_answering.pdf" alt="raw" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/images/gsm8k_reasoning_vs_answering_token_normed.png" alt="token-norm" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/images/gsm8k_reasoning_vs_answering.png" alt="raw" style="width:48%; display: inline-block;">
 <figcaption><b>Left: Token-normalized residual stream values projected along the token-normalized difference-in-means. Right: Raw residual stream values projected along the difference-in-means direction.</b></figcaption>
 </figure>
 
@@ -256,8 +257,8 @@ To probe the role of head (2, 17) within DeepSeek-R1-Distill-Llama-8B, we analyz
 - If at the `\n\n` token following `</think>` (which always precedes another `\n\n`), attends strongly to this `\n\n` token itself.
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/attn_l2_h17_ans.pdf" alt="attn-ans" style="width:48%; display: inline-block;">
-<img src="{{site.baseurl}}/assets/images/post_10/attn_l2_h17_base.pdf" alt="attn-base" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/attn_l2_h17_ans.png" alt="attn-ans" style="width:48%; display: inline-block;">
+<img src="{{site.baseurl}}/assets/images/post_10/attn_l2_h17_base.png" alt="attn-base" style="width:48%; display: inline-block;">
 <figcaption><b>Example attention maps for head (2, 17) using an immediate-answer template (left) and a reasoning template (right). Head (2, 17) exhibits a binary attention pattern: it either attends to BOS or, when at the <code>\n\n</code> token following <code>&lt;/think&gt;</code>, to that token.</b></figcaption>
 </figure>
 
