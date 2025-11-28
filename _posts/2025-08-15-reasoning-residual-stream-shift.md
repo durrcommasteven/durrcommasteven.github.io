@@ -192,11 +192,6 @@ before continuing to an answer.
 
 We use this pattern as our answering template. This is ideal as it (1) triggers answering mode immediately, (2) uses in-distribution behavior, and (3) differs minimally from the base reasoning template (differing by only `\n` → `\n\n</think>\n\n`).
 
-<figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/tikz_images/tikz_image3.png" alt="templates" style="width:80%">
-<figcaption><b>Reasoning template vs Answering template.</b></figcaption>
-</figure>
-
 **Reasoning template:** `<|User|>[PROMPT]<|Assistant|><think>\n`
 
 **Answering template:** `<|User|>[PROMPT]<|Assistant|><think>\n\n</think>\n\n`
@@ -234,7 +229,7 @@ The token-normalized difference-in-means had an average similarity of $0.88 \pm 
 ### Attention-patching L2 shift analysis
 
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="{{site.baseurl}}/assets/images/post_10/tikz_images/tikz_image2.png" alt="attn-exchange" style="width:80%">
+<img src="{{site.baseurl}}/assets/images/post_10/tikz_images/tikz_image3.png" alt="attn-exchange" style="width:80%">
 <figcaption><b>Attention head exchange between reasoning and answering templates.</b></figcaption>
 </figure>
 
