@@ -104,7 +104,8 @@ Interestingly, here it doesn't matter what the tax rate is. Whatever the governm
 $$
 x^* = \beta / \gamma
 $$
-The only effect that taxes have here is to make everyone sadder :(.
+The only effect that taxes have here is to make everyone sadder. 
+:(
 
 $$
 U(x) = \beta \log((1-t)sx) - \gamma x = \beta \log(sx) - \gamma x + \beta \log(1-t) = U_{t=0}(x) - |\beta \log(1-t)|

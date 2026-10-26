@@ -50,7 +50,7 @@ We sample 100 prompts from GSM8K and 100 prompts from each of several MMLU subje
 
 `<|User|>[MESSAGE]<|Assistant|><think>\n[REASONING TOKENS]\n</think>\n\n[ANSWERING TOKENS]<EOS>`
 
-We label tokens as *reasoning* or *answering* by membership in the `[REASONING TOKENS]` or `[ANSWERING TOKENS]` regions, respectively. For each labeled token, we extract the post-MLP residual stream activation at every layer $l\in\{0,\dots,L-1\}$, denoting the activation for token $t$ by $\mathbf{h}^{l}_{t}$. This yields two datasets per layer: $\mathcal{D}_{\text{reas.}}^{l}$, consisting of all reasoning token activations, and $\mathcal{D}_{\text{ans.}}^{l}$, consisting of all answering token activation.
+We label tokens as *reasoning* or *answering* by membership in the `[REASONING TOKENS]` or `[ANSWERING TOKENS]` regions, respectively. For each labeled token, we extract the post-MLP residual stream activation at every layer $l\in\{0,\dots,L-1\}$, denoting the activation for token $t$ by $\mathbf{h}^{l}\_{t}$. This yields two datasets per layer: $\mathcal{D}\_{\text{reas.}}^{l}$, consisting of all reasoning token activations, and $\mathcal{D}\_{\text{ans.}}^{l}$, consisting of all answering token activations.
 
 ## Difference-in-means analysis
 
